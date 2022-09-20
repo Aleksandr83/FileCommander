@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:conv="using:GUI.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FileCommander.Views.BootRecordView">
+
+  <UserControl.Resources>  
+    <conv:ToHexStringConverter    x:Key="ToHexStringConverter"/>
+    <conv:TextErrorColorConverter x:Key="TextErrorColorConverter"/>
+  </UserControl.Resources>
+
+  <UserControl.Styles>
+    <Style Selector="Separator">
+      <Setter Property="Height" Value="8" />
+      <Setter Property="HorizontalAlignment" Value="Left" />
+      <Setter Property="Background" Value="Gray" />     
+      <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="Separator">               
+                  <Line StartPoint="1,1" EndPoint="4000.0,1" StrokeThickness="1"  Stroke="{TemplateBinding Background}" StrokeDashArray="2,4"/>                
+            </ControlTemplate>
+        </Setter.Value>
+      </Setter>     
+    </Style>
+
+    <Style Selector="Label">
+      <Setter Property="FontFamily" Value="Times New Roman|MonoBold" />
+      <Setter Property="FontSize"   Value="16" />
+    </Style>
+  </UserControl.Styles>  
+
+  <ScrollViewer>
+    <Grid ColumnDefinitions="50*, 50*">    
+      
+        <StackPanel x:Name="myStackPanel" Orientation="Vertical">      
+            <Label Content="RecordSize"/>     
+            <Separator HorizontalAlignment="Right" />
+            <Label Content="Version"/>   
+            <Separator HorizontalAlignment="Right" />
+            <Label Content="IsSupportCompression"/>   
+            <Separator HorizontalAlignment="Right" />
+            <Label Content="IsSupportEncription"/>   
+            <Separator HorizontalAlignment="Right" />
+            <Label Content="RootDirectoryId"/>     
+            <Separator HorizontalAlignment="Right" />
+            <Label Content="OffsetFileTable"/>     
+            <Separator HorizontalAlignment="Right" />
+            <Label Content="CountRecordsInTable"/>     
+            <Separator HorizontalAlignment="Right" />
+            <!-- <Label Content="OffsetData"/>     
+            <Separator HorizontalAlignment="Right" />           -->
+
+            <Label Content="Crc" Margin="0,30,0,0" />     
+            <Separator HorizontalAlignment="Right" />
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Orientation="Vertical"> 
+          <Label Content="{Binding RecordSize,Converter={StaticResource ToHexStringConverter}}"/>   
+          <Separator Width="3"/>
+          <Label Content="{Binding Version,Converter={StaticResource ToHexStringConverter}}"/>    
+          <Separator Width="3"/>
+          <Label Content="{Binding IsSupportCompression,Converter={StaticResource ToHexStringConverter}}"/>    
+          <Separator Width="3"/>
+          <Label Content="{Binding IsSupportEncription,Converter={StaticResource ToHexStringConverter}}"/>    
+          <Separator Width="3"/>
+          <Label Content="{Binding RootDirectoryId,Converter={StaticResource ToHexStringConverter}}"/>    
+          <Separator Width="3"/>
+          <Label Content="{Binding OffsetFileTable,Converter={StaticResource ToHexStringConverter}}"/>    
+          <Separator Width="3"/>
+          <Label Content="{Binding CountRecordsInTable,Converter={StaticResource ToHexStringConverter}}"/>   
+          <Separator Width="3"/> 
+          <!-- <Label Content="{Binding OffsetData,Converter={StaticResource ToHexStringConverter}}"/>   
+          <Separator Width="3"/>        -->
+
+          <Label Content="{Binding Crc,Converter={StaticResource ToHexStringConverter}}" 
+                 Width="50" Margin="0,30,0,0" HorizontalAlignment="Left"
+                 Background="{Binding IsCorrectCrc,Converter={StaticResource TextErrorColorConverter}}"
+                 />    
+          <Separator Width="1"/>
+        </StackPanel>    
+      
+    </Grid>
+  </ScrollViewer>
+</UserControl>

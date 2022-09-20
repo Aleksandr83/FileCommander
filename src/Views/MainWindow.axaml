@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FileCommander.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:localViews="using:FileCommander.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"        
+        x:Class="FileCommander.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FileCommander">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Window.Styles>
+
+        <Style Selector="Label.Copyright">
+            <Setter Property="FontSize" Value="9" />
+        </Style>
+
+    </Window.Styles>
+
+    <Grid RowDefinitions="32, *, 32">
+      <!--#region Toolbar-->
+        <StackPanel Orientation="Horizontal" Background="LightGray"> 
+            
+        </StackPanel>
+        <!--#endregion Toolbar-->
+
+        <DockPanel Grid.Row="1" Background="LightYellow">            
+            <localViews:FileCommanderView />     
+        </DockPanel>
+
+        <!--#region StatusBar-->
+        <DockPanel Grid.Row="2"  Background="LightGray">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,4">
+                <Label Classes="Copyright">Copyright (c) 2022 Lukin Aleksandr</Label>
+                <Label Classes="Copyright" Margin="0,-6,0,0">lukin.a.g.spb@gmail.com</Label>
+            </StackPanel>        
+        </DockPanel>
+        <!--#endregion StatusBar--> 
+
+    </Grid>
+
+</Window>

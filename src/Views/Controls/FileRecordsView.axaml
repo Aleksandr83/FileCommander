@@ -1,0 +1,99 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="using:GUI.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FileCommander.Views.FileRecordsView">
+
+  <UserControl.Resources>
+    <conv:ToHexStringConverter            x:Key="ToHexStringConverter"/>
+    <conv:AsciiBytesToUtfStringConverter  x:Key="AsciiBytesToUtfStringConverter"/>
+  </UserControl.Resources>
+
+  <UserControl.Styles> 
+    <Style Selector="DataGrid">
+      <Setter Property="FontFamily" Value="Times New Roman|MonoBold" />
+      <Setter Property="FontSize"   Value="16" />
+      <Setter Property="Foreground" Value="Gray" />
+    </Style>
+  </UserControl.Styles>  
+
+  <Grid>
+    <ScrollViewer  HorizontalScrollBarVisibility="Visible">
+      <DataGrid  CanUserResizeColumns="True"  AutoGenerateColumns="False" Items="{Binding Items}" IsReadOnly="True" >
+        <DataGrid.Columns>
+              <DataGridTextColumn Header="CRC" 
+                                  Binding="{Binding Crc, Converter={StaticResource ToHexStringConverter}}" 
+                                  MinWidth="70"
+                                  Width="70" />
+              <DataGridTextColumn Header="RecordSize" 
+                                  Binding="{Binding RecordSize, Converter={StaticResource ToHexStringConverter}}" 
+                                  MinWidth="120"
+                                  Width="120" />
+              <DataGridTextColumn Header="IsDeleted" 
+                                  Binding="{Binding IsDeleted}" 
+                                  MinWidth="110"
+                                  Width="110" />
+              <DataGridTextColumn Header="NextFileRecord" 
+                                  Binding="{Binding NextFileRecord, Converter={StaticResource ToHexStringConverter}}"
+                                  MinWidth="140" 
+                                  Width="140" />
+              <DataGridTextColumn Header="Id" 
+                                  Binding="{Binding Id, Converter={StaticResource ToHexStringConverter}}"
+                                  MinWidth="150" 
+                                  Width="150" />
+              <DataGridTextColumn Header="Name" 
+                                  Binding="{Binding Name, Converter={StaticResource AsciiBytesToUtfStringConverter}}"
+                                  MinWidth="300" 
+                                  Width="300" />    
+              <DataGridTextColumn Header="ParentId" 
+                                  Binding="{Binding ParentId, Converter={StaticResource ToHexStringConverter}}"
+                                  MinWidth="150" 
+                                  Width="150" />                                  
+              <DataGridTextColumn Header="IsDirectory" 
+                                  Binding="{Binding IsDirectory}" 
+                                  MinWidth="120"
+                                  Width="120" />                             
+              <DataGridTextColumn Header="IsCompressed" 
+                                  Binding="{Binding IsCompressed}"
+                                  MinWidth="130" 
+                                  Width="130" />                    
+              <DataGridTextColumn Header="CompressedType" 
+                                  Binding="{Binding CompressedType}"
+                                  MinWidth="150" 
+                                  Width="150" />                    
+              <DataGridTextColumn Header="IsEncripted" 
+                                  Binding="{Binding IsEncripted}"
+                                  MinWidth="120" 
+                                  Width="120" />                  
+              <DataGridTextColumn Header="Alg" 
+                                  Binding="{Binding Alg}"
+                                  MinWidth="70" 
+                                  Width="70" />
+              <DataGridTextColumn Header="DataSize" 
+                                  Binding="{Binding DataSize, Converter={StaticResource ToHexStringConverter}}"
+                                  MinWidth="150" 
+                                  Width="150" /> 
+              <DataGridTextColumn Header="DataBlockCount" 
+                                  Binding="{Binding DataBlockCount, Converter={StaticResource ToHexStringConverter}}"
+                                  MinWidth="150" 
+                                  Width="150" />                     
+              <DataGridTextColumn Header="FirstDataBlockOffset" 
+                                  Binding="{Binding FirstDataBlockOffset, Converter={StaticResource ToHexStringConverter}}"
+                                  MinWidth="170" 
+                                  Width="170" />
+              <DataGridTextColumn Header="EncodingNameType" 
+                                  Binding="{Binding EncodingNameType}"
+                                  MinWidth="170" 
+                                  Width="170" />                                                          
+              <DataGridTextColumn Header="NameLength" 
+                                  Binding="{Binding NameLength, Converter={StaticResource ToHexStringConverter}}"
+                                  MinWidth="120" 
+                                  Width="120" />                  
+              
+          </DataGrid.Columns>
+      </DataGrid>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

@@ -1,0 +1,115 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localViews="using:FileCommander.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FileCommander.Views.DeviceFsView">
+  <UserControl.Styles>
+    <Style Selector="TabControl">
+      <Setter Property="Background" Value="#F0F0F0"/>
+      <!-- <Setter Property="Height" Value="120"/> -->
+    </Style>
+    <Style Selector="TabControl WrapPanel">
+      <Setter Property="Background" Value="#2B579A"/>
+    </Style>
+
+    <Style Selector="TabItem">
+      <Setter Property="FontSize" Value="18"/>
+      <Setter Property="Height" Value="34"/>
+      <!-- <Setter Property="VerticalAlignment" Value="Center"/> -->
+      <Setter Property="Background" Value="#2B579A"/>
+      <Setter Property="Foreground" Value="#F0F0F0"/>
+      <Setter Property="Margin" Value="0 0 0 0"/>
+      <Setter Property="Padding" Value="15 0"/>
+    </Style>
+    <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="Yellow"/>
+    </Style>
+
+    <Style Selector="TabItem:focus">
+      <Setter Property="Foreground" Value="#2B579A"/>
+      <Setter Property="Margin" Value="0 0 0 0"/>
+      <Setter Property="Padding" Value="15 0"/>
+    </Style>
+    <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="#f0f0f0"/>
+    </Style>
+
+    <Style Selector="TabItem:selected">
+      <Setter Property="Foreground" Value="#2B579A"/>
+      <Setter Property="Margin" Value="0 0 0 0"/>
+      <Setter Property="Padding" Value="15 0"/>
+    </Style>
+    <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="#f0f0f0"/>
+    </Style>
+  </UserControl.Styles>
+  
+  <Grid>    
+    
+      <TabControl>
+        <TabItem Header="List of files">
+          <Grid RowDefinitions="64, 32, *">            
+
+            <StackPanel Orientation="Vertical" Width="150" HorizontalAlignment="Left">
+              <Label Content="Storage" HorizontalAlignment="Center" />
+              <Line Margin="0,-2, 0, 4" StartPoint="-5,0"  EndPoint="155,0" StrokeThickness="1" Stroke="Black" />
+              <Line Margin="0,-4, 0, 0" StartPoint="-5,0"  EndPoint="-5,8"  StrokeThickness="1" Stroke="Black"  />
+              <Line Margin="0,-8, 0, 0" StartPoint="155,0" EndPoint="155,8" StrokeThickness="1" Stroke="Black"  />
+              <DockPanel Height="32">
+                <Button Content="New"     Command="{Binding NewStorage}" />
+                <Button Content="Load"    Command="{Binding LoadStorage}"/>
+                <Button Content="Save"    Command="{Binding SaveStorage}"/>                            
+              </DockPanel>              
+            </StackPanel>  
+
+            <StackPanel Orientation="Vertical" Margin="170,0,0,0" Width="100" HorizontalAlignment="Left">
+              <Label Content="Create" HorizontalAlignment="Center" />
+              <Line Margin="0,-2, 0, 4" StartPoint="-5,0"  EndPoint="105,0" StrokeThickness="1" Stroke="Black" />
+              <Line Margin="0,-4, 0, 0" StartPoint="-5,0"  EndPoint="-5,8"  StrokeThickness="1" Stroke="Black"  />
+              <Line Margin="0,-8, 0, 0" StartPoint="105,0" EndPoint="105,8" StrokeThickness="1" Stroke="Black"  />
+              <DockPanel>
+                <Button Content="File"    Command="{Binding NewFile}" />
+                <Button Content="Folder"  Command="{Binding NewFolder}" />  
+              </DockPanel> 
+            </StackPanel>  
+
+            <StackPanel Orientation="Vertical" Margin="290,0,0,0" Width="292" HorizontalAlignment="Left">
+              <Label Content="Selection" HorizontalAlignment="Center" />
+              <Line Margin="0,-2, 0, 4" StartPoint="-5,0"  EndPoint="297,0" StrokeThickness="1" Stroke="Black" />
+              <Line Margin="0,-4, 0, 0" StartPoint="-5,0"  EndPoint="-5,8"  StrokeThickness="1" Stroke="Black"  />
+              <Line Margin="0,-8, 0, 0" StartPoint="297,0" EndPoint="297,8" StrokeThickness="1" Stroke="Black"  />
+              <DockPanel>
+                <Button Content="Open"    Command="{Binding Open}" />
+                <Button Content="Rename"  Command="{Binding Rename}" />  
+                <Button Content="Delete"  Command="{Binding Delete}" /> 
+                <Button Content="Copy"    Command="{Binding Copy}" />   
+                <Button Content="Move"    Command="{Binding Move}" />  
+              </DockPanel> 
+            </StackPanel>    
+
+            <DockPanel Grid.Row="1">
+              <StackPanel Orientation="Horizontal">
+                <Label Content="Path:" />
+                <Label Content="{Binding Path}" />
+              </StackPanel>              
+            </DockPanel>
+
+            <DockPanel Grid.Row="2">
+              <localViews:FileListView /> 
+            </DockPanel>            
+            
+          </Grid>
+        </TabItem>
+        <TabItem Header="BootRecord">
+          <localViews:BootRecordView />
+        </TabItem>
+        <TabItem Header="FileRecordsTable">
+          <localViews:FileRecordsView />
+        </TabItem>
+      </TabControl>
+    
+   
+  </Grid>
+</UserControl>
