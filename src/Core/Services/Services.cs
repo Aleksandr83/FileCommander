@@ -29,21 +29,10 @@ namespace FileCommander.Services
                 ((ISettingsService)ServicesFactory.Create<ISettingsService>());
             ServicesManager.Registration<IEventManagerService>
                 ((IEventManagerService)ServicesFactory.Create<IEventManagerService>());
+            ServicesManager.Registration<ICommandManagerService>
+                ((ICommandManagerService)ServicesFactory.Create<ICommandManagerService>()); 
             ServicesManager.Registration<IVirtualStorageService>
-                ((IVirtualStorageService)ServicesFactory.Create<IVirtualStorageService>());
-
-            // ServicesManager.Registration<ICommandsService>
-            //     ((ICommandsService)ServicesFactory.Create<ICommandsService>());
-            // ServicesManager.Registration<IDbService>
-            //     ((IDbService)ServicesFactory.Create<IDbService>());
-            // ServicesManager.Registration<IReffersService>
-            //     ((IReffersService)ServicesFactory.Create<IReffersService>());
-            // ServicesManager.Registration<IColumnsConfigurationService>
-            //     ((IColumnsConfigurationService)ServicesFactory.Create<IColumnsConfigurationService>());
-            // ServicesManager.Registration<IDockManagerService>
-            //     ((IDockManagerService)ServicesFactory.Create<IDockManagerService>());
-            // ServicesManager.Registration<IDataFilterService>
-            //      ((IDataFilterService)ServicesFactory.Create<IDataFilterService>());
+                ((IVirtualStorageService)ServicesFactory.Create<IVirtualStorageService>());           
         }
     }
 }

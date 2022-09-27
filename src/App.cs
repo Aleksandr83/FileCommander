@@ -12,9 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using alg.Types;
+using FileCommander;
 using FileCommander.Services;
 using FileCommander.Services.App;
-//using EmployeeClient.Views.Interfaces;
+
 
 namespace MyApp.FileCommander
 {
@@ -24,13 +25,7 @@ namespace MyApp.FileCommander
         {
             Services.Registration();          
             InitConfiguration();
-            RegisteringCommands();
-            //Reffers.Registration();
-            //Services.Views
-            //    .Views.Registration();
-            //AttachViewsInDockManager();
-            //DbManager.Disconnected();           
-
+            RegisteringCommands();                 
         }             
 
         private static void InitConfiguration()
@@ -38,26 +33,11 @@ namespace MyApp.FileCommander
             (ServicesManager
                 .GetService<IAppService>() as IAppService)?
                 .InitConfiguration();
-        }
-
-        private static void AttachViewsInDockManager()
-        {
-            // var views = ViewManager.GetAll<IView>();
-            // var dockManager = (IDockManagerService)ServicesManager
-            //     .GetService<IDockManagerService>();
-            // foreach (var view in views)
-            //     dockManager?.AddView(view);
-        }         
+        }           
       
         private static void RegisteringCommands()
         {          
-            // var commandsService = (ICommandsService)ServicesManager
-            //     .GetService<ICommandsService>();
-            // commandsService.CommandRegistration(new Command
-            //     (
-            //         CommandsNames.CONNECTED_TO_DB,                    
-            //         AppCommands.ConnectionToDB
-            //     ));
+            CommandRegistrator.Registration();    
         }              
 
     }

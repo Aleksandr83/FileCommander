@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using alg.Helpers;
 using Avalonia.Controls;
-using Avalonia.Media;
+using Avalonia.Input;
 using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 using FileCommander.Services;
@@ -10,8 +10,7 @@ using FileCommander.Services;
 namespace FileComander.GUI.Behaviors
 {
     public class ListBoxFocusableOnEventBehavior : Behavior<ListBox>
-    {
-        //AssociatedObject
+    {        
         const string __SET_FOCUS_FILELIST_EVENT  = EventNames.__SET_FOCUS_FILELIST_EVENT;
 
         bool _IsAttached = false;
@@ -41,6 +40,7 @@ namespace FileComander.GUI.Behaviors
             base.OnAttached();
             if (AssociatedObject == null) return;
 
+            AssociatedObject.PointerReleased += OnPointerReleased;
             _IsAttached = true;
         }
 
@@ -49,7 +49,13 @@ namespace FileComander.GUI.Behaviors
             base.OnDetaching();
             if (AssociatedObject == null) return;
 
+            AssociatedObject.PointerReleased -= OnPointerReleased;
             _IsAttached = false;
+        }
+
+        void OnPointerReleased(object? sender, PointerReleasedEventArgs? e)
+        {
+
         }
 
         void OnUpdateFocus(object sender, EventArgs e)

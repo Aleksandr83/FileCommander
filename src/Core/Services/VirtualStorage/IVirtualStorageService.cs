@@ -17,6 +17,7 @@ namespace FileCommander.Services
         internal void LoadDefaultStorage();
         internal void SaveDefaultStorage();
         internal void CreateFolder(string folderName);
+        internal void CreateFile(string fileName);
     }
     
 }

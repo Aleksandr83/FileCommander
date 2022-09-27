@@ -3,9 +3,9 @@ using VirtualFS;
 
 namespace FileCommander.ViewModels
 {
-    public class File : FsItemViewModel
+    public class FileView : FsItemViewModel
     {
-        public File(FileRecord fileRecord) :base(fileRecord)
+        public FileView(FileRecord fileRecord) :base(fileRecord)
         {
 
         }

@@ -114,25 +114,35 @@ namespace VirtualFS
             EventManager?.RaiseEvent(__UPDATE_FILEREC_EVENT,this, new EventManagerArgs());
         }
 
+        public void CreateFile(VirtualFS.Path path,string fileName)
+        {
+            CreateFileRecord(path, fileName, 0);
+        }
+
         public void CreateFolder(VirtualFS.Path path,string folderName)
+        {
+            CreateFileRecord(path, folderName, 1);
+        }
+
+        public void CreateFileRecord(VirtualFS.Path path,string name,Byte isDirectory)
         {
             Path.PathItem? parent = path?.Last();          
             UInt32? parentId      = (parent == null)? GetRootDirectoryId() : parent?.Id;
-            Byte[]  name          = EncodingConverter.ToAssciByteArray(folderName);
+            Byte[]  itemName      = EncodingConverter.ToAssciByteArray(name);
             
             var record = new FileRecord()
             {
                 Id          = GetNewFileRecordId(),
                 ParentId    = parentId ?? UInt32.MinValue,
-                IsDirectory = 1,
+                IsDirectory = isDirectory,
                 IsDeleted   = 0,
                 
-                NameLength  =  (Byte)name.Length,
-                Name        =  name
+                NameLength  =  (Byte)itemName.Length,
+                Name        =  itemName
             };     
 
             var size = Struct.GetSizeExt<FileRecord>();
-            record.RecordSize = (ushort)(name.Length + size);               
+            record.RecordSize = (ushort)(itemName.Length + size);               
             
             record.Crc    = CalcFileRecordCrc(record, size);              
 

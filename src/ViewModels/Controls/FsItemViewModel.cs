@@ -11,6 +11,11 @@ namespace FileCommander.ViewModels
             get { return _FileRecord.Name; }
         }
 
+        public byte IsDirectory
+        {
+            get { return _FileRecord.IsDirectory; }
+        }
+
         public FileRecord GetValue() => _FileRecord;
 
         public FsItemViewModel(FileRecord fileRecord)

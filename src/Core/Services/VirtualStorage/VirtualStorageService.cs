@@ -79,6 +79,11 @@ namespace FileCommander.Services
             _Storage.CreateFolder(_CurrentPath, folderName);
         }
 
+        public void CreateFile(string fileName)
+        {
+            _Storage.CreateFile(_CurrentPath, fileName);
+        }
+
         void CheckAndCreateDefaultDir()
         {            
             var folder = GetDefaultStorageFolder();

@@ -64,52 +64,37 @@ public class DeviceFsViewModel : ViewModelBase
     }    
 
     public void NewStorage()
-    {
-        StorageService.CreateNewStorage();
+    {        
+        BasicServices.GetCommandManagerService()
+            .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_STORAGE);
     }
 
     public void LoadStorage()
-    {
-        StorageService.LoadDefaultStorage();
+    {       
+        BasicServices.GetCommandManagerService()
+            .ExecuteCommandById(CommandsId.__LOAD_VIRTUAL_STORAGE);
     }
 
     public void SaveStorage()
-    {
-        StorageService.SaveDefaultStorage();
-    }
-
-    public async Task NewFile()
-    {
-        dynamic? app = Avalonia.Application.Current?.ApplicationLifetime;
-        
-        var dlg = new EnterTextDlg() {Title = "CreateFile", Watermark="FileName" };
-
-        dlg.ShowDialog(app?.MainWindow);
-
-        await Task.Run(() => dlg.Wait()); 
-
-        string fileName = dlg.DialogResult;
-        if (String.IsNullOrEmpty(fileName)) return;
-    }
-
-    public async Task NewFolder()
     {        
-        dynamic? app = Avalonia.Application.Current?.ApplicationLifetime;
-        
-        var dlg = new EnterTextDlg() {Title = "CreateFolder", Watermark="FolderName" };
+        BasicServices.GetCommandManagerService()
+            .ExecuteCommandById(CommandsId.__SAVE_VIRTUAL_STORAGE);
+    }
 
-        dlg.ShowDialog(app?.MainWindow);
-             
-        await Task.Run(() => dlg.Wait());
+    public void NewFile()
+    {
+        BasicServices.GetCommandManagerService()
+            .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_FILE);
+    }
 
-        string folderName = dlg.DialogResult;
-        if (String.IsNullOrEmpty(folderName)) return;
-
-        StorageService.CreateFolder(folderName);
+    public void NewFolder()
+    {        
+        BasicServices.GetCommandManagerService()
+            .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_FOLDER);
     }         
    
     void OnUpdatePath(object sender, EventArgs e)
-    {
+    {        
         Path = StorageService.GetCurrentPath().ToString();
     }
 

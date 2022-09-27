@@ -7,7 +7,7 @@ namespace FileCommander.ViewModels
     public class ViewModelBase : ReactiveObject, INotifyPropertyChanged
     {
         #region PropertyChanged
-        public new event PropertyChangedEventHandler PropertyChanged = new PropertyChangedEventHandler((x,y)=>{});
+        public new event PropertyChangedEventHandler? PropertyChanged = new PropertyChangedEventHandler((x,y)=>{});
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

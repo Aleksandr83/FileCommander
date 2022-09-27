@@ -27,6 +27,11 @@ namespace VirtualFS
             _FileTable.CreateFolder(path, folderName);
         }
         
+        internal void CreateFile(VirtualFS.Path path,string fileName)
+        {
+            _FileTable.CreateFile(path, fileName);
+        }
+
 
     }
 

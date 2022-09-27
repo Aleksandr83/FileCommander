@@ -8,12 +8,14 @@ using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using Avalonia.Input;
 
 namespace FileCommander.ViewModels
 {
 
 public class FileListViewModel  : ViewModelBase
 {
+    const string __DBL_CLICK_FILE_LST_EVENT     = EventNames.__DBL_CLICK_FILE_LST_EVENT;
     const string __UPDATE_STORAGE_PATH_EVENT    = EventNames.__UPDATE_STORAGE_PATH_EVENT;
     const string __UPDATE_FILEREC_EVENT         = EventNames.__UPDATE_FILEREC_EVENT;
     const string __SET_FOCUS_FILELIST_EVENT     = EventNames.__SET_FOCUS_FILELIST_EVENT;
@@ -66,6 +68,7 @@ public class FileListViewModel  : ViewModelBase
     public FileListViewModel()
     {
         EventManager?.Registred(__SET_FOCUS_FILELIST_EVENT); 
+        EventManager?.Registred(__DBL_CLICK_FILE_LST_EVENT, OnDoubleClick);
         EventManager?.Registred(__UPDATE_FILEREC_EVENT, OnUpdateFileRecordsTable);
         EventManager?.Registred(__UPDATE_STORAGE_PATH_EVENT , OnUpdateFileRecordsTable);
     }   
@@ -100,6 +103,13 @@ public class FileListViewModel  : ViewModelBase
                 _Items?.Add(new FolderView(item));
         }            
 
+        foreach (var item in items)
+        {
+            if (item.IsDeleted != 0) continue;
+            if (item.IsDirectory == 0)
+                _Items?.Add(new FileView(item));
+        }
+
         EventManager?.RaiseEvent(__SET_FOCUS_FILELIST_EVENT,this, new EventManagerArgs());
     }
 
@@ -108,7 +118,13 @@ public class FileListViewModel  : ViewModelBase
         if (_Items?.Count > 0) _Items?.Clear();
     }
 
-    void SelectCommand(object e)
+    void OnDoubleClick(object sender, EventArgs e)
+    {        
+        if (sender.GetType() == this.GetType()) return;
+        SelectCommand();
+    }
+
+    internal void SelectCommand()
     {
         if (_SelectedPlace == null) return;
 
@@ -119,12 +135,13 @@ public class FileListViewModel  : ViewModelBase
         var selectedId   = selectedItem.Id;
         if (selectedItem.IsDirectory != 0)
             StorageService.GetCurrentPath().Set(selectedId);       
-    }   
+    }     
 
-    void CreateFolderCommand(object e)
+    internal void CreateFolderCommand()
     {
-
-    }
+        BasicServices.GetCommandManagerService()
+            .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_FOLDER);
+    }  
 
 }
 

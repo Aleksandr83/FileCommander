@@ -11,6 +11,12 @@ namespace alg.Helpers
                         .GetService<IEventManagerService>();            
         }     
 
+        public static ICommandManagerService GetCommandManagerService()
+        {
+            return (ICommandManagerService)ServicesManager
+                        .GetService<ICommandManagerService>();
+        }
+
         public static ILogService GetLogService()
         {
             return (ILogService)ServicesManager
