@@ -106,7 +106,8 @@
           <localViews:BootRecordView />
         </TabItem>
         <TabItem Header="FileRecordsTable">
-          <localViews:FileRecordsView />
+          <localViews:FileTableView />
+         
         </TabItem>
       </TabControl>
     

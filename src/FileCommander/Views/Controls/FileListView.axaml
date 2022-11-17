@@ -58,6 +58,6 @@
             </StackPanel>
           </DataTemplate>
         </ListBox.ItemTemplate>
-      </ListBox>  
+      </ListBox>        
   </Grid>
 </UserControl>

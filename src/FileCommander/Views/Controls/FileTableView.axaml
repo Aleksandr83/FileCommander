@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="using:GUI.Converters"
+             xmlns:localViews="using:FileCommander.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FileCommander.Views.FileTableView">
+
+
+     <Grid RowDefinitions="50*, 3, 50*">
+        <localViews:FileRecordsView />
+        <GridSplitter Grid.Row="1"  />
+        <localViews:FileDataRecordsView Grid.Row="2" />
+     </Grid>
+
+</UserControl>
