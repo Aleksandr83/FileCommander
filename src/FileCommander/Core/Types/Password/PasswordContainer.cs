@@ -12,8 +12,8 @@ namespace alg.Types
     {
         private const int ALG_PASS_NOT_CODED   = 0;
         public virtual int      Algoritm { get; set; }
-        public virtual String   Password { get; set; }
-        public virtual String   Salt     { get; set; }
+        public virtual String   Password { get; set; } = String.Empty;
+        public virtual String   Salt     { get; set; } = String.Empty;
 
         public PasswordContainer()
         {

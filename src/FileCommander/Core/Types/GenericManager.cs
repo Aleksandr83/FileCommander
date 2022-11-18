@@ -13,10 +13,10 @@ namespace alg.Types
     {
         static IList<object>     _Cache    = new List<object>();
         static ServiceCollection _Services = new ServiceCollection();
-        static ServiceProvider   _ServiceProvider;
+        static ServiceProvider?  _ServiceProvider;
 
         protected static ServiceCollection GetServices() => _Services;
-        protected static ServiceProvider GetServiceProvider() => _ServiceProvider;
+        protected static ServiceProvider? GetServiceProvider() => _ServiceProvider;
         protected static void BuildServiceProvider() => _ServiceProvider = GetServices().BuildServiceProvider();
         protected static void AddSingleton<T>(T value) where T : class
         {
@@ -32,10 +32,13 @@ namespace alg.Types
             }
         }
 
-        public static void Registration<T>(T service) where T : class
+        public static void Registration<T>(T? service) where T : class
         {
-            AddSingleton<T>(service);
-            BuildServiceProvider();
+            if (service != null)
+            {
+                AddSingleton<T>(service);
+                BuildServiceProvider();
+            }
         }
 
         private static void ValueСaching(object value)

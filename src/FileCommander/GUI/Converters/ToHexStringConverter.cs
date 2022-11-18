@@ -9,7 +9,7 @@ namespace GUI.Converters
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {            
-            return TextConvertorHelper.IntToHex(value);
+            return TextConvertorHelper.IntToHex(value ?? String.Empty);
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

@@ -16,7 +16,7 @@ namespace alg.Types.Configuration
 
         public List<SectionBlock> GetSettings() => _Settings;
 
-        public SectionBlock GetSectionByName(String sectionName)
+        public SectionBlock? GetSectionByName(String sectionName)
         {
             var settings = GetSettings();
             foreach (var section in settings)
@@ -49,7 +49,8 @@ namespace alg.Types.Configuration
                             sectionSeparator,
                             sectionBlock?.GetKey()                            
                         );
-                    result.Add(key, sectionBlock?.GetValue());
+                    if (sectionBlock != null)
+                        result.Add(key, sectionBlock.GetValue());
                 }              
             }
             return result;

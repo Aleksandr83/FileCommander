@@ -5,15 +5,15 @@ namespace alg.Helpers
 {
     public sealed class FileCommanderServices :  BasicServices
     {
-        public static IVirtualStorageService GetStorageService()
+        public static IVirtualStorageService? GetStorageService()
         {
-            return (IVirtualStorageService)ServicesManager
+            return (IVirtualStorageService?)ServicesManager
                     .GetService<IVirtualStorageService>();
         }   
 
-        public new static IFileCommanderLogService GetLogService()
+        public new static IFileCommanderLogService? GetLogService()
         {
-            return (IFileCommanderLogService)ServicesManager
+            return (IFileCommanderLogService?)ServicesManager
                     .GetService<ILogService>();
         }
         

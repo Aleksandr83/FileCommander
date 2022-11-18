@@ -12,7 +12,7 @@ namespace alg.Types.Generic
         protected abstract TypeId GetNodeParentId(T node);
         protected abstract int    CompareNodeId(TypeId id1, TypeId id2);
 
-        protected virtual T GetNodeById(TypeId id) 
+        protected virtual T? GetNodeById(TypeId id) 
         {           
             var items = GetAll();
 
@@ -42,7 +42,7 @@ namespace alg.Types.Generic
 
         protected bool IsNodeDefault(T item)
         {
-            if (default(T).Equals(item)) return true;
+            if (default(T)?.Equals(item)??false) return true;
             return false;
         }
 

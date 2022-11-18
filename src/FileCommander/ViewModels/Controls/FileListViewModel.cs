@@ -24,8 +24,8 @@ public class FileListViewModel  : ViewModelBase
 
     
     #region SelectedPlace
-    IFsItem _SelectedPlace = null;
-    public IFsItem SelectedPlace
+    IFsItem? _SelectedPlace = null;
+    public IFsItem? SelectedPlace
     {
         get { return _SelectedPlace; }
         set
@@ -38,7 +38,7 @@ public class FileListViewModel  : ViewModelBase
     
     #region EventManager
     IEventManagerService?       _EventManager;
-    IEventManagerService EventManager
+    IEventManagerService? EventManager
     {
         get
         {
@@ -50,7 +50,7 @@ public class FileListViewModel  : ViewModelBase
     #endregion EventManager
     #region StorageService
     IVirtualStorageService?           _StorageService;        
-    IVirtualStorageService StorageService
+    IVirtualStorageService? StorageService
     {
         get
         {
@@ -75,7 +75,8 @@ public class FileListViewModel  : ViewModelBase
 
     void OnUpdateFileRecordsTable(object sender, EventArgs e)
     {                
-        Dispatcher.UIThread.Post(() => UpdateItems(), DispatcherPriority.Background); 
+        //Dispatcher.UIThread.Post(() => UpdateItems(), DispatcherPriority.Background); 
+        Dispatcher.UIThread.InvokeAsync(() => UpdateItems(), DispatcherPriority.Background); 
     }
 
     async Task UpdateItems()
@@ -83,6 +84,12 @@ public class FileListViewModel  : ViewModelBase
         Clear();
 
         await Task.Delay(1);
+
+        if (StorageService == null)
+        {
+            OnAfterApdateItems();
+            return;
+        }
        
         var currentForlderId = StorageService.GetCurrentPath().GetCurrentFolderId();
         var items = (IList<FileRecord>)StorageService.GetFileTable().GetAllByParentId(currentForlderId);    
@@ -95,21 +102,29 @@ public class FileListViewModel  : ViewModelBase
             EventManager?.RaiseEvent(__SET_FOCUS_FILELIST_EVENT,this, new EventManagerArgs());
             return;
         }
-
-        foreach (var item in items)
-        {            
-            if (item.IsDeleted != 0) continue;
-            if (item.IsDirectory != 0)
-                _Items?.Add(new FolderView(item));
-        }            
-
-        foreach (var item in items)
+        
+        if (items != null)
         {
-            if (item.IsDeleted != 0) continue;
-            if (item.IsDirectory == 0)
-                _Items?.Add(new FileView(item));
-        }
+            foreach (var item in items)
+            {            
+                if (item.IsDeleted != 0) continue;
+                if (item.IsDirectory != 0)
+                    _Items?.Add(new FolderView(item));
+            }            
 
+            foreach (var item in items)
+            {
+                if (item.IsDeleted != 0) continue;
+                if (item.IsDirectory == 0)
+                    _Items?.Add(new FileView(item));
+            }
+        }
+        
+        OnAfterApdateItems();
+    }
+
+    void OnAfterApdateItems()
+    {
         EventManager?.RaiseEvent(__SET_FOCUS_FILELIST_EVENT,this, new EventManagerArgs());
     }
 
@@ -129,17 +144,17 @@ public class FileListViewModel  : ViewModelBase
         if (_SelectedPlace == null) return;
 
         if (_SelectedPlace is FolderLevelUpView)
-            StorageService.GetCurrentPath().RemoveLast();
+            StorageService?.GetCurrentPath().RemoveLast();
 
         var selectedItem = _SelectedPlace.GetValue();
         var selectedId   = selectedItem.Id;
         if (selectedItem.IsDirectory != 0)
-            StorageService.GetCurrentPath().Set(selectedId);       
+            StorageService?.GetCurrentPath().Set(selectedId);       
     }     
 
     internal void CreateFolderCommand()
     {
-        BasicServices.GetCommandManagerService()
+        BasicServices.GetCommandManagerService()?
             .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_FOLDER);
     }  
 

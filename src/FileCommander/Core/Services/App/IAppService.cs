@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using alg.Services;
+using alg.Types.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,6 @@ namespace FileCommander.Services.App
         bool   IsExistConfigurationFile();
         void   CreateConfigurationFile();
         void   InitConfiguration();
-        dynamic GetConfiguration();
+        IConfiguration? GetConfiguration();
     }
 }

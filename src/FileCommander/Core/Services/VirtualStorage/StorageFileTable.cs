@@ -21,7 +21,7 @@ namespace VirtualFS
         
         #region EventManager
         IEventManagerService?       _EventManager;
-        IEventManagerService EventManager
+        IEventManagerService? EventManager
         {
             get
             {
@@ -33,7 +33,7 @@ namespace VirtualFS
         #endregion EventManager
         #region StorageService
         IVirtualStorageService?           _StorageService;        
-        IVirtualStorageService StorageService
+        IVirtualStorageService? StorageService
         {
             get
             {
@@ -180,7 +180,7 @@ namespace VirtualFS
 
         UInt32 GetRootDirectoryId()
         {          
-            return StorageService.GetBootRecord().GetValue().RootDirectoryId;           
+            return StorageService?.GetBootRecord().GetValue().RootDirectoryId ?? 0;           
         }        
 
         UInt32 GetNewFileRecordId()
@@ -210,6 +210,8 @@ namespace VirtualFS
 
         UInt32 GetFileRecordOffset(UInt32 fileRecordId)
         {            
+            if (StorageService == null) return 0;
+
             UInt32 result = StorageService.GetBootRecord().GetValue()
                                 .OffsetFileTable;
 
@@ -243,7 +245,7 @@ namespace VirtualFS
 
             _FileRecords.Add(fileRecord);
 
-            LogService.LogFileRecord("Load FileRecord:", fileRecord);
+            LogService?.LogFileRecord("Load FileRecord:", fileRecord);
             EventManager?.RaiseEvent(__UPDATE_FILEREC_EVENT,this, new EventManagerArgs());
 
         }

@@ -13,10 +13,11 @@ namespace Types.Generic
         }
         #endregion Constructor          
        
-        protected override void OnChangeNewValue(string value)
+        protected override void OnChangeNewValue(string? value)
         {          
             int result; 
             if (!IsInit) return;
+            
             if (int.TryParse(value, out result))
             {
                 Value = result;

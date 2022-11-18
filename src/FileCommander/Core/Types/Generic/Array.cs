@@ -9,7 +9,7 @@ namespace alg.Types.Generic
 {
     public class ArrayType
     {
-        public static T ToStruct<T>(Byte[] bytes, UInt32 size)
+        public static T? ToStruct<T>(Byte[] bytes, UInt32 size)
         {            
             IntPtr ptr      = IntPtr.Zero;
             int elementSize = Marshal.SizeOf(typeof(T));            
@@ -23,7 +23,7 @@ namespace alg.Types.Generic
 
                 Marshal.Copy(bytes, 0, ptr, (int)size);
                 
-                return (T)Marshal.PtrToStructure(ptr, typeof(T));                
+                return (T?)Marshal.PtrToStructure(ptr, typeof(T));                
             }
             finally
             {

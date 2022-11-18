@@ -37,9 +37,9 @@ namespace FileCommander.Services
         MultiDictionary<string, EventManagerHandler> _EventHandlers = new MultiDictionary<string, EventManagerHandler>(true);
         
         #region LogService
-        IFileCommanderLogService   _LogService;
+        IFileCommanderLogService?   _LogService;
 
-        IFileCommanderLogService LogService 
+        IFileCommanderLogService? LogService 
         { 
             get
             {
@@ -94,7 +94,7 @@ namespace FileCommander.Services
             {
                 string s = eventName;
                 while (IsExistEventsInQueue(s)) Thread.Sleep(1);
-                LogService.Information("Oueue with events named='{@eventName}' is empty", eventName);
+                LogService?.Information("Oueue with events named='{@eventName}' is empty", eventName);
             });
 
             return Task.Factory.StartNew(action);           
@@ -184,10 +184,12 @@ namespace FileCommander.Services
             return result;
         } 
 
-        static void EventHandlerExecute(object data)
+        static void EventHandlerExecute(object? data)
         {
-            ThreadState state = (ThreadState)data;            
-            
+            ThreadState state = (data != null)?(ThreadState)data : new(); 
+                       
+            if (data == null) return;
+
             for (;;)
             {
                 var eventManager = state.EventManager;

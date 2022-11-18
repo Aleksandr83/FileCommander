@@ -20,7 +20,7 @@ public class DeviceFsViewModel : ViewModelBase
       
     #region EventManager
     IEventManagerService?       _EventManager;
-    IEventManagerService EventManager
+    IEventManagerService? EventManager
     {
         get
         {
@@ -32,7 +32,7 @@ public class DeviceFsViewModel : ViewModelBase
     #endregion EventManager
     #region StorageService
     IVirtualStorageService? _StorageService;        
-    IVirtualStorageService  StorageService
+    IVirtualStorageService?  StorageService
     {
         get
         {
@@ -65,37 +65,37 @@ public class DeviceFsViewModel : ViewModelBase
 
     public void NewStorage()
     {        
-        BasicServices.GetCommandManagerService()
+        BasicServices.GetCommandManagerService()?
             .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_STORAGE);
     }
 
     public void LoadStorage()
     {       
-        BasicServices.GetCommandManagerService()
+        BasicServices.GetCommandManagerService()?
             .ExecuteCommandById(CommandsId.__LOAD_VIRTUAL_STORAGE);
     }
 
     public void SaveStorage()
     {        
-        BasicServices.GetCommandManagerService()
+        BasicServices.GetCommandManagerService()?
             .ExecuteCommandById(CommandsId.__SAVE_VIRTUAL_STORAGE);
     }
 
     public void NewFile()
     {
-        BasicServices.GetCommandManagerService()
+        BasicServices.GetCommandManagerService()?
             .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_FILE);
     }
 
     public void NewFolder()
     {        
-        BasicServices.GetCommandManagerService()
+        BasicServices.GetCommandManagerService()?
             .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_FOLDER);
     }         
    
     void OnUpdatePath(object sender, EventArgs e)
     {        
-        Path = StorageService.GetCurrentPath().ToString();
+        Path = StorageService?.GetCurrentPath().ToString() ?? String.Empty;
     }
 
 }

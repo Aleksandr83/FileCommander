@@ -11,19 +11,19 @@ namespace FileCommander
         public static void CreateVirtualStorage(object e)
         {
             var storageService = FileCommanderServices.GetStorageService(); 
-            storageService.CreateNewStorage();
+            storageService?.CreateNewStorage();
         }
 
         public static void LoadVirtualStorage(object e)
         {
             var storageService = FileCommanderServices.GetStorageService(); 
-            storageService.LoadDefaultStorage();
+            storageService?.LoadDefaultStorage();
         }
 
         public async static void SaveVirtualStorage(object e)
         {
             var storageService = FileCommanderServices.GetStorageService(); 
-            storageService.SaveDefaultStorage();
+            storageService?.SaveDefaultStorage();
 
             await Task.Delay(1);
         }
@@ -42,7 +42,7 @@ namespace FileCommander
             string fileName = dlg.DialogResult;
             if (String.IsNullOrEmpty(fileName)) return;
 
-            storageService.CreateFile(fileName);
+            storageService?.CreateFile(fileName);
         }
 
         public async static void CreateVirtualFolder(object e)
@@ -59,7 +59,7 @@ namespace FileCommander
             string folderName = dlg.DialogResult;
             if (String.IsNullOrEmpty(folderName)) return;
 
-            storageService.CreateFolder(folderName);
+            storageService?.CreateFolder(folderName);
         }
 
     }

@@ -20,7 +20,7 @@ namespace VirtualFS
 
         #region EventManager
         IEventManagerService?       _EventManager;
-        IEventManagerService EventManager
+        IEventManagerService? EventManager
         {
             get
             {
@@ -32,7 +32,7 @@ namespace VirtualFS
         #endregion EventManager
         #region StorageService
         IVirtualStorageService?           _StorageService;        
-        IVirtualStorageService StorageService
+        IVirtualStorageService? StorageService
         {
             get
             {
@@ -43,9 +43,9 @@ namespace VirtualFS
         }
         #endregion StorageService
         #region LogService
-        IFileCommanderLogService   _LogService;
+        IFileCommanderLogService?   _LogService;
 
-        IFileCommanderLogService LogService 
+        IFileCommanderLogService? LogService 
         { 
             get
             {
@@ -84,9 +84,11 @@ namespace VirtualFS
                 _IsWasErrors = true;               
             }
 
-            LogService.LogBootRecord("Load BootRecord",_BootRecord);
+            LogService?.LogBootRecord("Load BootRecord",_BootRecord);
             
-            EventManager?.RaiseEvent(__UPDATE_BOOTREC_EVENT,this, new EventManagerArgs());               
+            EventManager?.RaiseEvent(__UPDATE_BOOTREC_EVENT,this, new EventManagerArgs()); 
+
+            await Task.Delay(1);               
         }      
 
         async void CreateNewBootRecord()
@@ -104,20 +106,22 @@ namespace VirtualFS
                 }
             }                       
 
-            bootRecord.RecordSize = (UInt16)Struct.GetSize<BootRecord>();
-            bootRecord.Version    = 1;      
+            bootRecord.RecordSize      = (UInt16)Struct.GetSize<BootRecord>();
+            bootRecord.Version         = 1;      
             bootRecord.OffsetFileTable = bootRecord.RecordSize;
 
             _BootRecord = bootRecord; 
             _BootRecord.Crc = BootRecordCalcCrc();  
 
-            EventManager?.RaiseEvent(__UPDATE_BOOTREC_EVENT,this, new EventManagerArgs());                         
+            EventManager?.RaiseEvent(__UPDATE_BOOTREC_EVENT,this, new EventManagerArgs()); 
+
+            await Task.Delay(1);                         
         }     
         
         public byte BootRecordCalcCrc()
         {
-            Crc8 crc8   = new Crc8();
-            byte result = 0;
+            Crc8 crc8    = new Crc8();
+            byte result  = 0;
             
             UInt32 size  = Struct.GetSize<BootRecord>();
             Byte[] bytes = Struct.ToArray<BootRecord>(_BootRecord);
@@ -129,7 +133,7 @@ namespace VirtualFS
 
         async void OnUpdateFileRecordsTable(object sender, EventArgs e)
         {                  
-            if (_IsWasErrors) return;
+            if (_IsWasErrors || StorageService == null) return;
 
             UInt32? countRecords = (UInt32)StorageService.GetFileTable().Count;
 
@@ -143,6 +147,7 @@ namespace VirtualFS
 
             EventManager?.RaiseEvent(__UPDATE_BOOTREC_EVENT,this, new EventManagerArgs());          
            
+            await Task.Delay(1); 
         }
 
     }

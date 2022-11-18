@@ -23,7 +23,7 @@ namespace VirtualFS
 
         #region EventManager
         IEventManagerService?       _EventManager;
-        IEventManagerService EventManager
+        IEventManagerService? EventManager
         {
             get
             {
@@ -35,7 +35,7 @@ namespace VirtualFS
         #endregion EventManager
         #region StorageService
         IVirtualStorageService?           _StorageService;        
-        IVirtualStorageService StorageService
+        IVirtualStorageService? StorageService
         {
             get
             {
@@ -46,9 +46,9 @@ namespace VirtualFS
         }
         #endregion StorageService
         #region LogService
-        IFileCommanderLogService   _LogService;
+        IFileCommanderLogService?   _LogService;
 
-        IFileCommanderLogService LogService 
+        IFileCommanderLogService? LogService 
         { 
             get
             {
@@ -65,8 +65,9 @@ namespace VirtualFS
         }
 
         public async void Load(Storage storage, string fileName)
-        {            
-            await EventManager.WaitEmptyEventsInQueue(EventNames.__UPDATE_BOOTREC_EVENT);
+        {      
+            if (EventManager != null)      
+              await EventManager.WaitEmptyEventsInQueue(EventNames.__UPDATE_BOOTREC_EVENT);
 
             StreamReader sr = new StreamReader(fileName);
 
@@ -90,7 +91,7 @@ namespace VirtualFS
             reader.BaseStream.Seek(0, SeekOrigin.Begin);                
             Byte[] bytes = reader.ReadBytes(recordSize);
 
-            LogService.Information("Load bytes for BootRecord: {@SpecialBytes}", bytes);
+            LogService?.Information("Load bytes for BootRecord: {@SpecialBytes}", bytes);
             
             storage.GetBootRecord().LoadBootRecord(bytes, recordSize);
         }
@@ -98,13 +99,15 @@ namespace VirtualFS
         async Task LoadFileTable(BinaryReader reader, Storage storage)
         {
             List<Byte> bytes;            
-            var bootTable = StorageService.GetBootRecord().GetValue();
-            UInt32 offset = bootTable.OffsetFileTable;            
+            BootRecord? bootTable = null;
+            if (StorageService != null)
+              bootTable = (BootRecord?)StorageService.GetBootRecord().GetValue();
+            UInt32 offset = bootTable?.OffsetFileTable ?? 0;            
             UInt32 defaultSize  = Struct.GetSizeExt<FileRecord>();            
 
             if (offset < Struct.GetSizeExt<BootRecord>()) return;
 
-            for (UInt32 i = 0; i < bootTable.CountRecordsInTable; i++)
+            for (UInt32 i = 0; i < bootTable?.CountRecordsInTable; i++)
             {
                 reader.BaseStream.Seek(offset, SeekOrigin.Begin);
                 bytes = new List<byte>(reader.ReadBytes((int)defaultSize));
@@ -119,8 +122,9 @@ namespace VirtualFS
                 while(factNameLength-- > 0)                
                     bytes.Add(reader.ReadByte());
 
-                LogService.Information("Load bytes for FileRecord[{@i}]: {@SpecialBytes}",i, bytes.ToArray());
+                LogService?.Information("Load bytes for FileRecord[{@i}]: {@SpecialBytes}",i, bytes.ToArray());
 
+                if (EventManager != null)
                 await EventManager.WaitEmptyEventsInQueue(EventNames.__UPDATE_FILEREC_EVENT);
 
                 storage.GetFileTable().LoadFileRecord(bytes.ToArray(), (UInt32)bytes.Count);

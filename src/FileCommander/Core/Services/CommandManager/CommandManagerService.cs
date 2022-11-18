@@ -38,7 +38,7 @@ namespace FileCommander.Services
                {
                     var cmd = _Commands[commandId];
 
-                    if (cmd._Command.CanExecute(parameter))
+                    if (cmd._Command?.CanExecute(parameter)??false)
                         cmd._Command.Execute(parameter);
                }
           }

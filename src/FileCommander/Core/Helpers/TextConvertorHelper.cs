@@ -42,9 +42,10 @@ namespace alg.Helpers
 
         public static string AsciiBytesToUtfString(Byte[]? value)
         {
-            if (value == null || value?.Length == 0) return "";
+            if ((value == null) || (value?.Length == 0)) return "";
 
-            byte[] utf8Array = Encoding.Convert(Encoding.ASCII, Encoding.UTF8, (Byte[] )value);
+            value = (value != null)? value: new byte[] {}; // ?            
+            byte[] utf8Array = Encoding.Convert(Encoding.ASCII, Encoding.UTF8, (Byte[])value);
             return Encoding.UTF8.GetString(utf8Array);
         }
     }

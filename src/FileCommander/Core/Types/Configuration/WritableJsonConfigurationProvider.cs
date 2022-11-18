@@ -26,7 +26,7 @@ namespace alg.Types.Configuration
         public override void Load(Stream stream)
         {            
             var settings  = JsonConfigurationFileParser.Parse(stream);
-            base.Data = settings.ToDictionary(SECTION_SEPARATOR);
+            base.Data = settings?.ToDictionary(SECTION_SEPARATOR);
         }
 
         public override void Set(string key, string value)
@@ -37,11 +37,13 @@ namespace alg.Types.Configuration
             var sectionName   = key.Split(SECTION_SEPARATOR)?.First()?.Trim();
             var parameterName = key.Split(SECTION_SEPARATOR)?.Last()?.Trim();
 
+            if ((sectionName == null) || (parameterName == null)) return;
+
             var settings = GetSettings();
             var section  = settings?.GetSectionByName(sectionName);
             if (section == null)
-                section  = settings.Add(new SectionBlock() { Section = sectionName });
-            section.SetValue(parameterName, value);            
+                section  = settings?.Add(new SectionBlock() { Section = sectionName });
+            section?.SetValue(parameterName, value);            
         }
 
     }

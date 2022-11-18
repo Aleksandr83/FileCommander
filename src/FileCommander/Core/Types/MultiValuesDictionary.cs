@@ -13,8 +13,8 @@ namespace alg.Types
         MultiDictionary<TKey, TValue> Items = 
             new MultiDictionary<TKey, TValue>(true);
 
-        public ICollection<TKey>   GetKeys() => Items?.Keys;
-        public ICollection<TValue> GetValues(TKey key) => Items?[key];
+        public ICollection<TKey>?   GetKeys() => Items?.Keys;
+        public ICollection<TValue>? GetValues(TKey key) => Items?[key];
         public bool IsContainsKey(TKey key) => Items?.ContainsKey(key) ?? false;
 
         public void Add(TKey key, TValue value)

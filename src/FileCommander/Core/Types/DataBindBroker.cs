@@ -13,8 +13,8 @@ namespace alg.Types
     {
 
         #region Value
-        private T _value;
-        public T Value
+        private T? _value = default(T);
+        public T? Value
         {
             get { return _value; }
             set
@@ -26,7 +26,7 @@ namespace alg.Types
         #endregion Value
 
         #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)

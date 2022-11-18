@@ -18,26 +18,27 @@ namespace FileCommander.Services.App
     {
         private const String CONFIG_FILE_NAME    = "config.json";
 
-        JsonConfigurationFile _ConfigurationFile = null;        
+        JsonConfigurationFile? _ConfigurationFile = null;        
 
         public String GetAppId()
         {
             String appId = "";
-            var attribute = (GuidAttribute)Assembly
+            var attribute = (GuidAttribute?)Assembly
                 .GetEntryAssembly()?
                 .GetCustomAttributes(typeof(GuidAttribute), true)[0];
-            appId = attribute.Value;
-            return appId;
+            if (attribute != null)
+                appId = attribute.Value;
+            return (attribute != null)?appId:String.Empty;
         }
 
         public String GetAppName()
         {
-            return Assembly.GetEntryAssembly()?.GetName()?.Name;
+            return Assembly.GetEntryAssembly()?.GetName()?.Name ?? String.Empty;
         }
 
         public String GetAppVersion()
         {
-            return Assembly.GetEntryAssembly()?.GetName()?.Version?.ToString();
+            return Assembly.GetEntryAssembly()?.GetName()?.Version?.ToString() ?? String.Empty;
         }
 
         public String GetAuthor()
@@ -57,8 +58,8 @@ namespace FileCommander.Services.App
 
         public String GetCopyright()
         {
-            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
-            return versionInfo.LegalCopyright;
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()?.Location??String.Empty);
+            return versionInfo?.LegalCopyright ?? String.Empty;
         }
 
         public String GetConfigurationDataDir()
@@ -114,10 +115,11 @@ namespace FileCommander.Services.App
         {            
             CreateConfigurationDataDir();
             CreateConfigurationFile();
-            _ConfigurationFile.InitConfiguration();
+            _ConfigurationFile?.InitConfiguration();
         }
 
-        public dynamic GetConfiguration() => _ConfigurationFile.GetConfiguration();
+       
+        public alg.Types.Configuration.IConfiguration? GetConfiguration() => _ConfigurationFile?.GetConfiguration();
         
     }
 }

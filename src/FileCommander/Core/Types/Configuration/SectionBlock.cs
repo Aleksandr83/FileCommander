@@ -9,7 +9,7 @@ namespace alg.Types.Configuration
 {
     internal class SectionBlock   
     {
-        public string Section { get; set; }
+        public string Section { get; set; } = String.Empty;
 
         public List<SectionValue> Values { get; private set; }
                 = new List<SectionValue>();

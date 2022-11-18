@@ -94,7 +94,7 @@ namespace VirtualFS
             return (_Items.Count == 0)? null : _Items.Last();
         }
 
-        protected virtual void OnPathChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected virtual void OnPathChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
 
         }

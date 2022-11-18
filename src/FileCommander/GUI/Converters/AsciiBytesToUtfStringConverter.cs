@@ -10,7 +10,7 @@ namespace GUI.Converters
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {      
-            return TextConvertorHelper.AsciiBytesToUtfString((Byte[])value);
+            return TextConvertorHelper.AsciiBytesToUtfString((Byte[]?)value);
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

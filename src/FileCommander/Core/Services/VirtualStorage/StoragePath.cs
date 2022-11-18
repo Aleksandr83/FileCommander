@@ -64,25 +64,26 @@ namespace VirtualFS
             }
         }
 
-        protected override void OnPathChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override void OnPathChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             base.OnPathChanged(sender, e);
 
             EventManager?.RaiseEvent(__UPDATE_STORAGE_PATH_EVENT,this, new EventManagerArgs());            
         }
 
-        public virtual void Clear()
+        public override void Clear()
         {
-            _CurrentFolderId = StorageService.GetBootRecord().GetRootDirectoryId();
+            if (StorageService != null)
+                _CurrentFolderId = StorageService.GetBootRecord().GetRootDirectoryId();
             base.Clear();
         }
 
         public bool IsRootDirectory()
         {
-            return (StorageService.GetBootRecord().GetRootDirectoryId() == _CurrentFolderId);
+            return ((StorageService?.GetBootRecord()?.GetRootDirectoryId()??uint.MaxValue) == _CurrentFolderId);
         }
 
-        public void RemoveLast()
+        public override void RemoveLast()
         {
             base.RemoveLast();
             dynamic? lastItem = Last();

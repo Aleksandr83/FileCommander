@@ -17,7 +17,7 @@ namespace FileComander.GUI.Behaviors
 
         #region EventManager
         IEventManagerService?       _EventManager;
-        IEventManagerService EventManager
+        IEventManagerService? EventManager
         {
             get
             {
@@ -59,33 +59,37 @@ namespace FileComander.GUI.Behaviors
         }
 
         void OnUpdateFocus(object sender, EventArgs e)
-        {
-            Dispatcher.UIThread.Post(() => UpdateFocus(), DispatcherPriority.Background);
+        {  
+            //Dispatcher.UIThread.Post(() => UpdateFocus(), DispatcherPriority.Background);
+            Dispatcher.UIThread.InvokeAsync(() => UpdateFocus(), DispatcherPriority.Background);
         }
 
          async Task UpdateFocus()
          {
+            await Task.Delay(1);
+            
             if (_IsAttached)
             {
                 var listBox = AssociatedObject;
-                var item    = listBox.SelectedItem;
+                var item    = listBox?.SelectedItem;
                 
                 if (item != null) 
                 {
-                    var containers = listBox.ItemContainerGenerator.Containers; //.ContainerFromItem(item);
+                    var containers = listBox?.ItemContainerGenerator.Containers; //.ContainerFromItem(item);
                     
-                    foreach (var container in containers)
+                    if (containers != null)
                     {
-                        if (container.ContainerControl is ListBoxItem)
-                        {                            
-                            if (container.Item == item)
-                                container.ContainerControl.Focus();
+                        foreach (var container in containers)
+                        {
+                            if (container.ContainerControl is ListBoxItem)
+                            {                            
+                                if (container.Item == item)
+                                    container.ContainerControl.Focus();
+                            }
                         }
                     }
-                }
+                }              
                 
-                
-
             }
          }
 

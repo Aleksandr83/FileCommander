@@ -13,7 +13,7 @@ namespace FileComander.GUI.Behaviors
 
         #region EventManager
         IEventManagerService?       _EventManager;
-        IEventManagerService EventManager
+        IEventManagerService? EventManager
         {
             get
             {
@@ -31,6 +31,7 @@ namespace FileComander.GUI.Behaviors
 
         protected override void OnDoubleClick(object? sender)
         {          
+            if (sender == null) sender = new ();
             EventManager?.RaiseEvent(__DBL_CLICK_FILE_LST_EVENT, sender, new EventManagerArgs());
         }
     }

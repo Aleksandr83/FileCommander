@@ -14,20 +14,20 @@ namespace alg.Types.Configuration
     {
         private String   _FileName;        
 
-        private IConfiguration _Configuration;
+        private IConfiguration? _Configuration;
 
         public JsonConfigurationFile(String fileName)             
         {
             _FileName = fileName;
         }
 
-        public IConfiguration GetConfiguration()  => _Configuration;
+        public IConfiguration? GetConfiguration() => _Configuration;
         private String GetConfigurationFileName() => _FileName;
-        private String GetConfigurationDataDir()  => Path.GetDirectoryName(_FileName);
+        private String GetConfigurationDataDir()  => Path.GetDirectoryName(_FileName) ?? String.Empty;
 
         public void InitConfiguration()
         {
-            var configuration = (IConfigurationRoot)new ConfigurationBuilder()?
+            var configuration = (IConfigurationRoot?)new ConfigurationBuilder()?
                .SetBasePath(GetConfigurationDataDir())?
                .Add<WritableJsonConfigurationSource>
                    (
@@ -40,13 +40,16 @@ namespace alg.Types.Configuration
                            s.ResolveFileProvider();
                        })
                    )
-               .Build(); 
-            _Configuration = new JsonConfiguration(this, configuration);            
+               .Build();         
+                
+            
+            _Configuration = (configuration != null)? new JsonConfiguration(this, configuration): null;            
+
         }       
 
-        private JsonConfigurationProvider GetConfigurationProvider()
+        private JsonConfigurationProvider? GetConfigurationProvider()
         {
-            return (JsonConfigurationProvider)GetConfiguration()?.Providers?
+            return (JsonConfigurationProvider?)GetConfiguration()?.Providers?
                 .Where(provider => provider is WritableJsonConfigurationProvider)?
                 .FirstOrDefault();         
         }
@@ -54,8 +57,8 @@ namespace alg.Types.Configuration
         public void Save()
         {
             var fileName = GetConfigurationFileName();
-            var configurationProvider = (WritableJsonConfigurationProvider)GetConfigurationProvider();            
-            String jsonText = configurationProvider?.GetSettings()?.ToJson();           
+            var configurationProvider = (WritableJsonConfigurationProvider?)GetConfigurationProvider();            
+            String jsonText = configurationProvider?.GetSettings()?.ToJson() ?? String.Empty;           
             File.WriteAllText(fileName, jsonText);
         }
 

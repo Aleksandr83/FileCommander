@@ -5,21 +5,21 @@ namespace alg.Helpers
 {
     public class BasicServices
     {
-        public static IEventManagerService GetEventManagerService()
+        public static IEventManagerService? GetEventManagerService()
         {
-            return (IEventManagerService)ServicesManager
+            return (IEventManagerService?)ServicesManager
                         .GetService<IEventManagerService>();            
         }     
 
-        public static ICommandManagerService GetCommandManagerService()
+        public static ICommandManagerService? GetCommandManagerService()
         {
-            return (ICommandManagerService)ServicesManager
+            return (ICommandManagerService?)ServicesManager
                         .GetService<ICommandManagerService>();
         }
 
-        public static ILogService GetLogService()
+        public static ILogService? GetLogService()
         {
-            return (ILogService)ServicesManager
+            return (ILogService?)ServicesManager
                     .GetService<ILogService>();
         }
 

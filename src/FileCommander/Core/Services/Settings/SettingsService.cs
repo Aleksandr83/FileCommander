@@ -17,12 +17,18 @@ namespace EmployeeClient.Services.Settings
         public string GetStringValue
             (String section, String parameterName, String defaultValue)
         {
-            String result;
+            String result = String.Empty;
             var configuration = GetConfiguration();
-            result = configuration
-                .GetSection(string.Format("{0}:{1}", section, parameterName))
-                .Value;
-            if (String.IsNullOrEmpty(result)) result = defaultValue;
+
+            if (configuration != null)
+            {
+                result = configuration
+                    .GetSection(string.Format("{0}:{1}", section, parameterName))
+                    .Value;
+
+                if (String.IsNullOrEmpty(result)) result = defaultValue;
+            }
+
             return result;
         }
 
@@ -30,9 +36,13 @@ namespace EmployeeClient.Services.Settings
             (String section, String parameterName,String value = "")
         {            
             var configuration = GetConfiguration();
-            configuration
-                .GetSection(string.Format("{0}:{1}",section, parameterName))
-                .Value = value;
+
+            if (configuration != null)
+            {
+                configuration
+                    .GetSection(string.Format("{0}:{1}",section, parameterName))
+                    .Value = value;
+            }
         }
 
         public bool GetBoolValue
@@ -40,18 +50,24 @@ namespace EmployeeClient.Services.Settings
         {
             bool result = false;           
             var configuration = GetConfiguration();
-            var s = configuration
+
+            var s = configuration?
                 .GetSection(string.Format("{0}:{1}", section, parameterName))
                 .Value;
+
             return bool.TryParse(s, out result) ? result : defaultValue;
         }
         public void SetBoolValue
             (String section, String parameterName, bool value = false)
         {
             var configuration = GetConfiguration();
-            configuration
-                .GetSection(string.Format("{0}:{1}", section, parameterName))
-                .Value = value.ToString()?.Normalize();
+
+            if  (configuration != null)
+            {
+                configuration
+                    .GetSection(string.Format("{0}:{1}", section, parameterName))
+                    .Value = value.ToString()?.Normalize();
+            }
         }
         
         public int GetIntValue
@@ -59,22 +75,22 @@ namespace EmployeeClient.Services.Settings
         {
             int result = 0;
             var configuration = GetConfiguration();
-            var s = configuration
+            var s = configuration?
                 .GetSection(string.Format("{0}:{1}", section, parameterName))
                 .Value;
             return int.TryParse(s, out result) ? result : defaultValue;
         }
 
-        private IConfiguration GetConfiguration()
+        private IConfiguration? GetConfiguration()
         {
-            return (IConfiguration)(ServicesManager
+            return (IConfiguration?)(ServicesManager
                 .GetService<IAppService>() as IAppService)?
                 .GetConfiguration();
         }
 
         public void Save()
         {           
-            GetConfiguration().Save();
+            GetConfiguration()?.Save();
         }
     }
 }

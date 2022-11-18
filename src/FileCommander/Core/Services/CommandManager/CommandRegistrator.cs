@@ -9,6 +9,8 @@ namespace FileCommander
         public static void Registration()
         {
             var commandManager = BasicServices.GetCommandManagerService();
+
+            if (commandManager == null) return;
                         
             commandManager.CommandRegistration
                 (Actions.CreateVirtualStorage, "Create virtual storage",CommandsId.__CREATE_VIRTUAL_STORAGE);

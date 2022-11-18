@@ -4,11 +4,6 @@ using alg.Services;
 using alg.Services.Settings;
 using alg.Types;
 using FileCommander.Services.App;
-// using EmployeeClient.Services.App;
-// using EmployeeClient.Services.Commands;
-// using EmployeeClient.Services.DockManager;
-// using EmployeeClient.Services.Reffers;
-// using EmployeeClient.Services.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,17 +17,17 @@ namespace FileCommander.Services
         public static void Registration()
         {
             ServicesManager.Registration<ILogService>
-                ((ILogService)ServicesFactory.Create<ILogService>());
+                ((ILogService?)ServicesFactory.Create<ILogService>());
             ServicesManager.Registration<IAppService>
-                ((IAppService)ServicesFactory.Create<IAppService>());
+                ((IAppService?)ServicesFactory.Create<IAppService>());
             ServicesManager.Registration<ISettingsService>
-                ((ISettingsService)ServicesFactory.Create<ISettingsService>());
+                ((ISettingsService?)ServicesFactory.Create<ISettingsService>());
             ServicesManager.Registration<IEventManagerService>
-                ((IEventManagerService)ServicesFactory.Create<IEventManagerService>());
+                ((IEventManagerService?)ServicesFactory.Create<IEventManagerService>());
             ServicesManager.Registration<ICommandManagerService>
-                ((ICommandManagerService)ServicesFactory.Create<ICommandManagerService>()); 
+                ((ICommandManagerService?)ServicesFactory.Create<ICommandManagerService>()); 
             ServicesManager.Registration<IVirtualStorageService>
-                ((IVirtualStorageService)ServicesFactory.Create<IVirtualStorageService>());           
+                ((IVirtualStorageService?)ServicesFactory.Create<IVirtualStorageService>());           
         }
     }
 }

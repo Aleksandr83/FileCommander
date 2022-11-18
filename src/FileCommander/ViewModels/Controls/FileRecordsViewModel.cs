@@ -15,7 +15,7 @@ namespace FileCommander.ViewModels
                 
         #region EventManager
         IEventManagerService?       _EventManager;
-        IEventManagerService EventManager
+        IEventManagerService? EventManager
         {
             get
             {
@@ -27,7 +27,7 @@ namespace FileCommander.ViewModels
         #endregion EventManager
         #region StorageService
         IVirtualStorageService?           _StorageService;        
-        IVirtualStorageService StorageService
+        IVirtualStorageService? StorageService
         {
             get
             {
@@ -57,7 +57,8 @@ namespace FileCommander.ViewModels
 
         void OnUpdateFileRecordsTable(object sender, EventArgs e)
         {                
-            Dispatcher.UIThread.Post(() => UpdateItems(), DispatcherPriority.Background); 
+            //Dispatcher.UIThread.Post(() => UpdateItems(), DispatcherPriority.Background); 
+            Dispatcher.UIThread.InvokeAsync(() => UpdateItems(), DispatcherPriority.Background); 
         }
 
         async Task UpdateItems()

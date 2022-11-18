@@ -29,11 +29,11 @@ namespace alg.Helpers
             return Newtonsoft.Json.Formatting.None;
         }
 
-        public static T Deserialize<T>(String json, bool isCreateObjectOnEmpty = false) where T : class
+        public static T? Deserialize<T>(String json, bool isCreateObjectOnEmpty = false) where T : class
         {
             if (String.IsNullOrEmpty(json.Trim()))                         
                 return (isCreateObjectOnEmpty)? Activator.CreateInstance<T>(): null;
-            return (T)Newtonsoft.Json.JsonConvert
+            return (T?)Newtonsoft.Json.JsonConvert
                 .DeserializeObject<T>(json);
         }
        

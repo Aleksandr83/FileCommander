@@ -24,6 +24,7 @@ namespace Types.Generic
        
         public GenericValue(TValue value)
         {
+            _Value = value;
             RegistredValueChanged();           
         }
 
@@ -47,9 +48,9 @@ namespace Types.Generic
         }
 
         #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

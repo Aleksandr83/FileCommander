@@ -8,9 +8,9 @@ namespace Types.Generic
     {
         
         #region NewValue
-        TNewValue _NewValue;    
+        TNewValue? _NewValue = default(TNewValue);    
 
-        public TNewValue NewValue
+        public TNewValue? NewValue
         {
             get => _NewValue;
             set 
@@ -43,7 +43,7 @@ namespace Types.Generic
 
         private  void SetInit() =>_IsInit = true;
 
-        protected virtual void OnChangeNewValue(TNewValue value)
+        protected virtual void OnChangeNewValue(TNewValue? value)
         {
 
         }       

@@ -23,7 +23,7 @@ public class BootRecordViewMode : ViewModelBase
 
     #region EventManager
     IEventManagerService?       _EventManager;
-    IEventManagerService EventManager
+    IEventManagerService? EventManager
     {
         get
         {
@@ -35,7 +35,7 @@ public class BootRecordViewMode : ViewModelBase
     #endregion EventManager
     #region StorageService
     IVirtualStorageService?           _StorageService;        
-    IVirtualStorageService StorageService
+    IVirtualStorageService? StorageService
     {
         get
         {
@@ -46,9 +46,9 @@ public class BootRecordViewMode : ViewModelBase
     }
     #endregion StorageService
     #region LogService
-    IFileCommanderLogService   _LogService;
+    IFileCommanderLogService?  _LogService;
 
-    IFileCommanderLogService LogService 
+    IFileCommanderLogService? LogService 
     { 
         get
         {
@@ -167,24 +167,25 @@ public class BootRecordViewMode : ViewModelBase
     }    
 
     void OnUpdateBootRecord(object sender, EventArgs e)
-    {        
-        Dispatcher.UIThread.Post(() => Update(), DispatcherPriority.Background);        
+    {       
+        //Dispatcher.UIThread.Post(() => Update(), DispatcherPriority.Background); 
+        Dispatcher.UIThread.InvokeAsync (() => Update(), DispatcherPriority.Background);         
     }
 
     async Task Update()
     {
-        dynamic bootRecord = StorageService.GetBootRecord().GetValue(); 
+        dynamic? bootRecord = StorageService?.GetBootRecord()?.GetValue(); 
         
-        LogService.LogBootRecord("Task update view BootRecord", bootRecord); 
+        LogService?.LogBootRecord("Task update view BootRecord", bootRecord); 
 
-        RecordSize          = bootRecord.RecordSize;
-        Version             = bootRecord.Version;
-        RootDirectoryId     = bootRecord.RootDirectoryId;
-        OffsetFileTable     = bootRecord.OffsetFileTable;
-        CountRecordsInTable = bootRecord.CountRecordsInTable;    
-        Crc                 = bootRecord.Crc; 
+        RecordSize          = bootRecord?.RecordSize;
+        Version             = bootRecord?.Version;
+        RootDirectoryId     = bootRecord?.RootDirectoryId;
+        OffsetFileTable     = bootRecord?.OffsetFileTable;
+        CountRecordsInTable = bootRecord?.CountRecordsInTable;    
+        Crc                 = bootRecord?.Crc; 
 
-        var calcCrc  = StorageService.GetBootRecord().BootRecordCalcCrc();
+        var calcCrc  = StorageService?.GetBootRecord()?.BootRecordCalcCrc() ?? 0;
         IsCorrectCrc = (Crc == calcCrc)? true: false;     
 
         await Task.Delay(1);  

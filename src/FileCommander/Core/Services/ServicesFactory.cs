@@ -10,20 +10,20 @@ namespace FileCommander.Services
     internal sealed class ServicesFactory
     {
       
-        public static IService Create<T>()
+        public static IService? Create<T>()
         {
             if (typeof(T) == typeof(ILogService))
-                return (IService)Activator.CreateInstance(typeof(FileCommanderLogService));
+                return (IService?)Activator.CreateInstance(typeof(FileCommanderLogService));
             if (typeof(T) == typeof(IAppService))
-                return (IService)Activator.CreateInstance(typeof(AppService));            
+                return (IService?)Activator.CreateInstance(typeof(AppService));            
             if (typeof(T) == typeof(ISettingsService))
-                return (IService)Activator.CreateInstance(typeof(SettingsService));
+                return (IService?)Activator.CreateInstance(typeof(SettingsService));
             if (typeof(T) == typeof(IEventManagerService))
-                return (IEventManagerService)Activator.CreateInstance(typeof(EventManagerService));
+                return (IEventManagerService?)Activator.CreateInstance(typeof(EventManagerService));
             if (typeof(T) == typeof(ICommandManagerService))
-                return (ICommandManagerService)Activator.CreateInstance(typeof(CommandManagerService));
+                return (ICommandManagerService?)Activator.CreateInstance(typeof(CommandManagerService));
             if (typeof(T) == typeof(IVirtualStorageService))
-                return (IVirtualStorageService)Activator.CreateInstance(typeof(StorageService));          
+                return (IVirtualStorageService?)Activator.CreateInstance(typeof(StorageService));          
             
             return null;
         }

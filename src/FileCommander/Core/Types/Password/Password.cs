@@ -10,7 +10,7 @@ namespace alg.Types
 {
     public class Password : IPassword
     {
-        IPasswordContainer _PasswordContainer;        
+        IPasswordContainer? _PasswordContainer;        
 
         public Password()
         {
@@ -23,14 +23,14 @@ namespace alg.Types
             return new PasswordContainer();
         }
 
-        protected virtual void SetPasswordContainer(IPasswordContainer container)
+        protected virtual void SetPasswordContainer(IPasswordContainer? container)
         {
             _PasswordContainer = container;
         }
-        protected IPasswordContainer GetPasswordContainer() => _PasswordContainer;
+        protected IPasswordContainer? GetPasswordContainer() => _PasswordContainer;
         public virtual String GetValue()
         {           
-            return GetPasswordContainer()?.GetPassword();
+            return GetPasswordContainer()?.GetPassword() ?? String.Empty;
         }
         public virtual void SetValue(String value)
         {
@@ -49,9 +49,9 @@ namespace alg.Types
         }
 
         protected virtual String ContainerSerilize() 
-            => GetPasswordContainer()?.ToJson();
+            => GetPasswordContainer()?.ToJson() ?? String.Empty;
 
-        protected virtual IPasswordContainer ContainerDeserilize(String json)
+        protected virtual IPasswordContainer? ContainerDeserilize(String json)
         {
             return JsonHelper.Deserialize<PasswordContainer>(json);
         }

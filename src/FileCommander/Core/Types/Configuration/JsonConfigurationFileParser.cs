@@ -11,14 +11,14 @@ namespace alg.Types.Configuration
 {
     internal class JsonConfigurationFileParser
     {
-        public static JsonSettings Parse(String fileName)
+        public static JsonSettings? Parse(String fileName)
         {
             var jsonText = ReadAll(fileName).GetAwaiter()
                 .GetResult();
             return ParseJsonText(jsonText);
         }
 
-        public static JsonSettings Parse(Stream stream)
+        public static JsonSettings? Parse(Stream stream)
         {
             var jsonText = ReadAll(stream).GetAwaiter()
                 .GetResult();
@@ -49,7 +49,7 @@ namespace alg.Types.Configuration
 
         }
 
-        private static JsonSettings ParseJsonText(String jsonText)
+        private static JsonSettings? ParseJsonText(String jsonText)
         {
             return (string.IsNullOrEmpty(jsonText.Trim()))?
                 new JsonSettings() :
