@@ -9,8 +9,8 @@ namespace VirtualFS
 {
     public class Path
     {
-        const string  __ROOT_DIR= "/";
-        readonly char __SEPARATOR = System.IO.Path.DirectorySeparatorChar;
+        readonly string  __ROOT_DIR  = System.IO.Path.DirectorySeparatorChar.ToString();
+        readonly char    __SEPARATOR = System.IO.Path.DirectorySeparatorChar;
 
         internal struct PathItem
         {

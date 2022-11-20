@@ -1,9 +1,22 @@
+using Avalonia;
+
 namespace FileCommander.ViewModels
 {
     public class EnterTextDlgViewModel  : ViewModelBase
     {
         string _Text = "";
-        string _Watermark = "";
+        string _Watermark = "";      
+        string _Title = "";
+
+        public string Title
+        {
+            get {return _Title; }
+            set
+            {
+                _Title = value;
+                OnPropertyChanged("Title");
+            }
+        }
 
         public string Text
         {

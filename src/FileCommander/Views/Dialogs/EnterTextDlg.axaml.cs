@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Data;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using FileCommander.ViewModels;
@@ -9,8 +10,18 @@ using FileCommander.ViewModels;
 namespace FileCommander.Views.Dialogs
 {
     public partial class EnterTextDlg : Window
-    {
-        EnterTextDlgViewModel _ViewModel = new EnterTextDlgViewModel();
+    {               
+        EnterTextDlgViewModel _ViewModel = new EnterTextDlgViewModel();       
+
+        public new String Title
+        {
+             get => GetValue(TitleProperty);
+             set 
+             {
+                SetValue(TitleProperty, value);
+                _ViewModel.Title = value;
+             }
+        }       
 
         public string DialogResult { get; set; } = "";
         public string Watermark    
@@ -23,8 +34,8 @@ namespace FileCommander.Views.Dialogs
         
         public EnterTextDlg()
         {          
-            InitializeComponent(); 
-            
+            InitializeComponent();            
+           
             DataContext = _ViewModel;
         }
 
@@ -54,5 +65,6 @@ namespace FileCommander.Views.Dialogs
                       
             _ResetEvent.Set();
         }
+                
     }
 }

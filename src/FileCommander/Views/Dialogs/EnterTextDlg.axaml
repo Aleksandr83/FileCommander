@@ -5,21 +5,31 @@
         xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
         xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
         xmlns:beh="using:alg.Behaviors"
-        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="50"
-        Width="400" Height="50"
+        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="22"
+        WindowStartupLocation="CenterOwner"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        Width="400" MinWidth="400" MaxWidth="400" 
+        Height="22" MinHeight="22" MaxHeight="22"       
         x:Class="FileCommander.Views.Dialogs.EnterTextDlg"
-        Title="Dialogs">
+        Title="Dialogs"
+        >
 
-  <Grid RowDefinitions="*">
-
-    <DockPanel>
-      <TextBox x:Name="TextInputElement" Text="{Binding Text, Mode=TwoWay}" HorizontalAlignment="Stretch" Height="32" Watermark="{Binding Watermark}" KeyUp="TextInputElement_KeyPressUp">
-        <!-- для фокуса элемента -->
-        <i:Interaction.Behaviors>
-          <beh:FocusOnPropertyChangedBehavior />
-        </i:Interaction.Behaviors>      
-      </TextBox>
-    </DockPanel>    
+  <Grid RowDefinitions="*" Background="Silver">   
+    <StackPanel Orientation="Vertical">
+      <DockPanel Background="#FF65FF51">
+        <Label Content="{Binding Title}" Height="22" />
+      </DockPanel>
+      <DockPanel Margin="0,4,0,0">
+        <TextBox x:Name="TextInputElement" Text="{Binding Text, Mode=TwoWay}" HorizontalAlignment="Stretch" Height="32" Watermark="{Binding Watermark}" KeyUp="TextInputElement_KeyPressUp">
+          <!-- для фокуса элемента -->
+          <i:Interaction.Behaviors>
+            <beh:FocusOnPropertyChangedBehavior />
+          </i:Interaction.Behaviors>      
+        </TextBox>
+      </DockPanel>    
+    </StackPanel>
 
   </Grid>
 </Window>
