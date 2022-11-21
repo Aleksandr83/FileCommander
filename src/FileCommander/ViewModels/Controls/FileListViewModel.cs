@@ -158,6 +158,12 @@ public class FileListViewModel  : ViewModelBase
             .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_FOLDER);
     }  
 
+    internal void CreateFileCommand()
+    {
+        BasicServices.GetCommandManagerService()?
+            .ExecuteCommandById(CommandsId.__CREATE_VIRTUAL_FILE);
+    }  
+
 }
 
 

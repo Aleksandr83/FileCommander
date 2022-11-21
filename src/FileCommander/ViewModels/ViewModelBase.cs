@@ -6,6 +6,24 @@ namespace FileCommander.ViewModels
 {
     public class ViewModelBase : ReactiveObject, INotifyPropertyChanged
     {
+
+        public bool IsWindowsOS
+        {
+            get => _IsWindowsOS;
+            set
+            {
+                _IsWindowsOS = value;
+                OnPropertyChanged("IsWindowsOS");
+            }
+        }
+
+        public ViewModelBase()
+        {            
+            var platform = Environment.OSVersion.Platform;
+
+            IsWindowsOS = (platform  == PlatformID.Win32NT);          
+        }
+
         #region PropertyChanged
         public new event PropertyChangedEventHandler? PropertyChanged = new PropertyChangedEventHandler((x,y)=>{});
 
@@ -16,6 +34,7 @@ namespace FileCommander.ViewModels
 
         #endregion PropertyChanged
 
+        bool _IsWindowsOS = false; 
     }
 
     

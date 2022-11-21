@@ -33,6 +33,7 @@
         <ListBox.KeyBindings>
           <KeyBinding Gesture="Enter" Command="{Binding SelectCommand}" />
           <KeyBinding Gesture="F7"    Command="{Binding CreateFolderCommand}"  />
+          <KeyBinding Gesture="F4"    Command="{Binding CreateFileCommand}"  />
         </ListBox.KeyBindings>
         <ListBox.ItemsPanel>
           <ItemsPanelTemplate>
