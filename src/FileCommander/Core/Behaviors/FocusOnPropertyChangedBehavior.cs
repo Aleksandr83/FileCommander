@@ -2,8 +2,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Xaml.Interactivity;
 
-namespace alg.Behaviors
-{
+namespace alg.Behaviors;
+
 
 public class FocusOnPropertyChangedBehavior : Behavior<Control>
 {
@@ -26,6 +26,4 @@ public class FocusOnPropertyChangedBehavior : Behavior<Control>
         if (AssociatedObject != null && !AssociatedObject.IsFocused) 
             AssociatedObject.Focus();
     }
-}
-
 }

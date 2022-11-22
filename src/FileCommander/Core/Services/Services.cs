@@ -10,24 +10,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileCommander.Services
+namespace FileCommander.Services;
+
+internal sealed class Services
 {
-    internal sealed class Services
+    public static void Registration()
     {
-        public static void Registration()
-        {
-            ServicesManager.Registration<ILogService>
-                ((ILogService?)ServicesFactory.Create<ILogService>());
-            ServicesManager.Registration<IAppService>
-                ((IAppService?)ServicesFactory.Create<IAppService>());
-            ServicesManager.Registration<ISettingsService>
-                ((ISettingsService?)ServicesFactory.Create<ISettingsService>());
-            ServicesManager.Registration<IEventManagerService>
-                ((IEventManagerService?)ServicesFactory.Create<IEventManagerService>());
-            ServicesManager.Registration<ICommandManagerService>
-                ((ICommandManagerService?)ServicesFactory.Create<ICommandManagerService>()); 
-            ServicesManager.Registration<IVirtualStorageService>
-                ((IVirtualStorageService?)ServicesFactory.Create<IVirtualStorageService>());           
-        }
+        ServicesManager.Registration<ILogService>
+            ((ILogService?)ServicesFactory.Create<ILogService>());
+        ServicesManager.Registration<IAppService>
+            ((IAppService?)ServicesFactory.Create<IAppService>());
+        ServicesManager.Registration<ISettingsService>
+            ((ISettingsService?)ServicesFactory.Create<ISettingsService>());
+        ServicesManager.Registration<IEventManagerService>
+            ((IEventManagerService?)ServicesFactory.Create<IEventManagerService>());
+        ServicesManager.Registration<ICommandManagerService>
+            ((ICommandManagerService?)ServicesFactory.Create<ICommandManagerService>()); 
+        ServicesManager.Registration<IVirtualStorageService>
+            ((IVirtualStorageService?)ServicesFactory.Create<IVirtualStorageService>());           
     }
 }

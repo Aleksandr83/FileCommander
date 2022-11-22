@@ -4,44 +4,44 @@ using System.Threading.Tasks;
 using alg.Services;
 using ReactiveUI;
 
-namespace FileCommander.Services
-{
-     public class CommandManagerService : ICommandManagerService
-     {
-          Dictionary<string, CommandInfo> _Commands = new Dictionary<string, CommandInfo>();
+namespace FileCommander.Services;
 
-          public CommandManagerService()
-          {
-               
-          }
+ public class CommandManagerService : ICommandManagerService
+ {      
 
-          public string CommandRegistration(Action<object> action, string description="", string commandId = "") 
-          {              
-               CommandInfo cmd = new CommandInfo();   
-               //commandId       = cmd._CommandId;     
+      public CommandManagerService()
+      {
+           
+      }
 
-               cmd._Command    = ReactiveCommand.Create(action); 
-               if (!string.IsNullOrEmpty(commandId)) 
-                    cmd._CommandId = commandId;
-               cmd._Description = description;
+      public string CommandRegistration(Action<object> action, string description="", string commandId = "") 
+      {              
+           CommandInfo cmd = new ();   
+           //commandId       = cmd._CommandId;     
 
-               _Commands.Add(cmd._CommandId, cmd);
+           cmd._Command    = ReactiveCommand.Create(action); 
+           if (!string.IsNullOrEmpty(commandId)) 
+                cmd._CommandId = commandId;
+           cmd._Description = description;
 
-               return cmd._CommandId;
-          }
+           _Commands.Add(cmd._CommandId, cmd);
 
-          public void ExecuteCommandById(string commandId, object? parameter = null)
-          {
-               if (string.IsNullOrEmpty(commandId)) return;
+           return cmd._CommandId;
+      }
 
-               if (_Commands.ContainsKey(commandId))
-               {
-                    var cmd = _Commands[commandId];
+      public void ExecuteCommandById(string commandId, object? parameter = null)
+      {
+           if (string.IsNullOrEmpty(commandId)) return;
 
-                    if (cmd._Command?.CanExecute(parameter)??false)
-                        cmd._Command.Execute(parameter);
-               }
-          }
+           if (_Commands.ContainsKey(commandId))
+           {
+                var cmd = _Commands[commandId];
 
-     }
+                if (cmd._Command?.CanExecute(parameter)??false)
+                    cmd._Command.Execute(parameter);
+           }
+      }
+
+      Dictionary<string, CommandInfo> _Commands = new ();
+
 }

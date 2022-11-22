@@ -1,19 +1,19 @@
 using System.Threading;
 
-namespace FileCommander.Services
-{
-    public class WaitEvent
-    {
-        ManualResetEvent _Event = new ManualResetEvent(false);
-      
-        internal void Set()
-        {
-            _Event.Set();
-        }
+namespace FileCommander.Services;
 
-        public void Wait()
-        {
-            _Event.WaitOne();
-        }
+public class WaitEvent
+{  
+  
+    internal void Set()
+    {
+        _Event.Set();
     }
+
+    public void Wait()
+    {
+        _Event.WaitOne();
+    }
+
+    private ManualResetEvent _Event = new (false);
 }

@@ -1,17 +1,16 @@
-namespace Types.Generic
+namespace Types.Generic;
+
+public class Command<TCommand>
 {
-    public class Command<TCommand>
+    public Command(TCommand command, string commandName)
     {
-        string      _CommandName = "";
-        TCommand    _Command;
-
-        public string CommandName => _CommandName;        
-
-        public Command(TCommand command, string commandName)
-        {
-            _Command     = command;
-            _CommandName = commandName;
-        }
-
+        _Command     = command;
+        _CommandName = commandName;
     }
+
+    public string CommandName => _CommandName;
+
+    private string   _CommandName = "";
+    private TCommand _Command;
+
 }

@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Types
+namespace alg.Types;
+
+public interface IPasswordContainer
 {
-    public interface IPasswordContainer
-    {
-        String GetPassword();
-        void   SetPassword(String password);
-        String ToJson();
-    }
+    String GetPassword();
+    void   SetPassword(String password);
+    String ToJson();
 }

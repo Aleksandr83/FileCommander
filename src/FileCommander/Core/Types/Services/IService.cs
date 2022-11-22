@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Services
+namespace alg.Services;
+
+public interface IService
 {
-    public interface IService
-    {
-    }
 }

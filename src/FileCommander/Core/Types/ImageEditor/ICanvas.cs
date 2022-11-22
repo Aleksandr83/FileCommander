@@ -1,7 +1,6 @@
-namespace Types.Generic.ImageEditor
-{
-    public interface ICanvas
-    {
+namespace Types.Generic.ImageEditor;
 
-    }
+public interface ICanvas
+{
+
 }

@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Types
+namespace alg.Types;
+
+public interface IPassword
 {
-    public interface IPassword
-    {
-        String GetValue();
-        void   SetValue(String value);
-        void   LoadEncodeString(String encodePassword);
-        String GetEncodeString();
-    }
+    String GetValue();
+    void   SetValue(String value);
+    void   LoadEncodeString(String encodePassword);
+    String GetEncodeString();
 }

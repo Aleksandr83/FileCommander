@@ -1,7 +1,6 @@
-namespace FileCommander.Services
+namespace FileCommander.Services;
+
+public class CommandFilter
 {
-    public class CommandFilter
-    {
-        
-    }
+    
 }

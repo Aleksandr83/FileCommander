@@ -17,28 +17,27 @@ using FileCommander.Services;
 using FileCommander.Services.App;
 
 
-namespace MyApp.FileCommander
+namespace MyApp.FileCommander;
+
+internal sealed class App
 {
-    internal sealed class App
+    public static void Init()
     {
-        public static void Init()
-        {
-            Services.Registration();          
-            InitConfiguration();
-            RegisteringCommands();                 
-        }             
+        Services.Registration();          
+        InitConfiguration();
+        RegisteringCommands();                 
+    }             
 
-        private static void InitConfiguration()
-        {
-            (ServicesManager
-                .GetService<IAppService>() as IAppService)?
-                .InitConfiguration();
-        }           
-      
-        private static void RegisteringCommands()
-        {          
-            CommandRegistrator.Registration();    
-        }              
+    private static void InitConfiguration()
+    {
+        (ServicesManager
+            .GetService<IAppService>() as IAppService)?
+            .InitConfiguration();
+    }           
+  
+    private static void RegisteringCommands()
+    {          
+        CommandRegistrator.Registration();    
+    }              
 
-    }
 }

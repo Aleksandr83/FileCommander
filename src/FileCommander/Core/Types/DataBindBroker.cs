@@ -7,34 +7,32 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Types
+namespace alg.Types;
+
+public class DataBindBroker<T> : INotifyPropertyChanged
 {
-    public class DataBindBroker<T> : INotifyPropertyChanged
+
+    #region PropertyChanged
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
     {
-
-        #region Value
-        private T? _value = default(T);
-        public T? Value
+        if (PropertyChanged != null)
         {
-            get { return _value; }
-            set
-            {
-                _value = value;
-                OnPropertyChanged("Value");
-            }
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion Value
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-        #endregion PropertyChanged
-
     }
+    #endregion PropertyChanged
+
+    public T? Value
+    {
+        get { return _value; }
+        set
+        {
+            _value = value;
+            OnPropertyChanged("Value");
+        }
+    }
+
+    private T? _value = default(T);
+
 }

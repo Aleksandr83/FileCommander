@@ -6,15 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Types.Configuration
+namespace alg.Types.Configuration;
+
+internal class WritableJsonConfigurationSource
+    : JsonConfigurationSource
 {
-    internal class WritableJsonConfigurationSource
-        : JsonConfigurationSource
+    public override IConfigurationProvider Build(IConfigurationBuilder builder)
     {
-        public override IConfigurationProvider Build(IConfigurationBuilder builder)
-        {
-            this.EnsureDefaults(builder);
-            return (IConfigurationProvider)new WritableJsonConfigurationProvider(this);
-        }
+        this.EnsureDefaults(builder);
+        return (IConfigurationProvider)new WritableJsonConfigurationProvider(this);
     }
 }

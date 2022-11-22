@@ -2,18 +2,17 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace FileCommander.Views
-{
-    public partial class FileCommanderView : UserControl
-    {        
+namespace FileCommander.Views;
 
-        public FileCommanderView()
-        {
-            InitializeComponent();
+public partial class FileCommanderView : UserControl
+{        
 
-            DataContext = this;
-        }
+    public FileCommanderView()
+    {
+        InitializeComponent();
 
-        
+        DataContext = this;
     }
+
+    
 }

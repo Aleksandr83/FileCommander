@@ -5,26 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Types.Configuration
-{
-    internal class SectionBlock   
+namespace alg.Types.Configuration;
+
+internal class SectionBlock   
+{       
+    public void SetValue(String key, String value)
     {
-        public string Section { get; set; } = String.Empty;
-
-        public List<SectionValue> Values { get; private set; }
-                = new List<SectionValue>();
-
-        public void SetValue(String key, String value)
+        foreach (var item in Values)
         {
-            foreach (var item in Values)
+            if (item.GetKey() == key)
             {
-                if (item.GetKey() == key)
-                {
-                    item.SetValue(value);
-                    return;
-                }
+                item.SetValue(value);
+                return;
             }
-            Values.Add(new SectionValue(key, value));
         }
+        Values.Add(new SectionValue(key, value));
     }
+
+    public string Section { get; set; } = String.Empty;
+    public List<SectionValue> Values { get; private set; } = new();
 }

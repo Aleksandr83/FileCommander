@@ -3,8 +3,8 @@ using System.Reflection;
 using System.Linq;
 using System;
 
-namespace Types.Generic
-{
+namespace Types.Generic;
+
 public static class TypeInfoExtension
 {
     public static IEnumerable<ConstructorInfo> GetAllConstructors(this TypeInfo typeInfo)
@@ -40,7 +40,4 @@ public static class TypeInfoExtension
             typeInfo = typeInfo.BaseType?.GetTypeInfo();
         }
     }
-}
-
-
 }

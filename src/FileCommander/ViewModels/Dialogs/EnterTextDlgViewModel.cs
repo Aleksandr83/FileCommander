@@ -3,7 +3,15 @@ using Avalonia;
 namespace FileCommander.ViewModels
 {
     public class EnterTextDlgViewModel  : ViewModelBase
-    {           
+    {
+
+        public EnterTextDlgViewModel() : base()
+        {
+            Height = (IsWindowsOS) ? 22 : 40;
+        }
+
+
+        #region Properties
 
         public string Title
         {
@@ -43,17 +51,15 @@ namespace FileCommander.ViewModels
                 _Height = value;
                 OnPropertyChanged("Height");
             }
-        }         
-       
-        public EnterTextDlgViewModel() : base()
-        {            
-            Height = (IsWindowsOS)? 22 : 40;  
-        }       
+        }
 
-        string _Text = "";
-        string _Watermark = "";      
-        string _Title = "";
+        #endregion Properties
         
-        double _Height;
+
+        private string _Text = "";
+        private string _Watermark = "";      
+        private string _Title = "";
+        
+        private double _Height;
     }
 }

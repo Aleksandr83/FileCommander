@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Types.Generic
+namespace alg.Types.Generic;
+
+public class JsonCollection<T> 
 {
-    public class JsonCollection<T> 
-    {
-        public IList<T> Items { get; set; } = new List<T>();
-       
-    }
+    public IList<T> Items { get; set; } = new List<T>();
+   
 }

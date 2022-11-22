@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace FileCommander.Views
+namespace FileCommander.Views;
+
+public partial class MainWindow : Window
 {
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

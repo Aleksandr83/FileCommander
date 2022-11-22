@@ -1,10 +1,9 @@
 using VirtualFS;
 
-namespace FileCommander.Services
+namespace FileCommander.Services;
+
+public interface IFileCommanderLogService : ILogService
 {
-    public interface IFileCommanderLogService : ILogService
-    {
-        void LogBootRecord(string message, BootRecord bootRecord);
-        void LogFileRecord(string message, FileRecord fileRecord);
-    }
+    void LogBootRecord(string message, BootRecord bootRecord);
+    void LogFileRecord(string message, FileRecord fileRecord);
 }

@@ -1,7 +1,6 @@
-namespace Types.Generic.ImageEditor
+namespace Types.Generic.ImageEditor;
+
+public interface ILayout
 {
-    public interface ILayout
-    {
-        
-    }
+    
 }
