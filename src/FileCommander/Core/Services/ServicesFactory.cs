@@ -1,7 +1,6 @@
-﻿// Copyright (c) 2022 Lukin Aleksandr
-using System;
-using alg.Services;
-using alg.Services.Settings;
+﻿using System;
+using Agl.Services;
+using Agl.Services.Settings;
 using FileCommander.Services.App;
 using EmployeeClient.Services.Settings;
 

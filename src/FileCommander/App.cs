@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using alg.Types;
+using Agl.Types;
 using FileCommander;
 using FileCommander.Services;
 using FileCommander.Services.App;

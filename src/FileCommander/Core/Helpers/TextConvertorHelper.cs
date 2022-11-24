@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace alg.Helpers;
+namespace Agl.Helpers;
 
 public static class TextConvertorHelper
 {

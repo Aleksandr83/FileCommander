@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Types.Generic;
 
-namespace Types.Generic;
+namespace Agl.Types.Generic;
 
 public class CommandManager<TCommand>
 {

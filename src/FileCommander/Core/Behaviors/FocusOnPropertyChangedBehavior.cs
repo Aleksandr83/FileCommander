@@ -2,8 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Xaml.Interactivity;
 
-namespace alg.Behaviors;
-
+namespace Agl.Behaviors;
 
 public class FocusOnPropertyChangedBehavior : Behavior<Control>
 {

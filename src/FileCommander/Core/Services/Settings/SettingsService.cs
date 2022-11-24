@@ -1,14 +1,7 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using alg.Services.Settings;
-using alg.Types;
-using alg.Types.Configuration;
-//using EmployeeClient.Helpers;
+﻿using Agl.Types;
+using Agl.Services.Settings;
+using Agl.Types.Configuration;
 using FileCommander.Services.App;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeClient.Services.Settings;
 

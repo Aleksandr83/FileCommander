@@ -1,6 +1,6 @@
 using System;
-using alg.Behaviors;
-using alg.Helpers;
+using Agl.Behaviors;
+using Agl.Helpers;
 using Avalonia.Controls;
 using FileCommander.Services;
 using VirtualFS;

@@ -1,7 +1,7 @@
-using alg.Types;
+using Agl.Types;
 using FileCommander.Services;
 
-namespace alg.Helpers;
+namespace Agl.Helpers;
 
 public class BasicServices
 {

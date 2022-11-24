@@ -7,8 +7,7 @@ using Avalonia.Input;
 using Avalonia.Xaml.Interactivity;
 using FileCommander.Services;
 
-namespace alg.Behaviors;
-
+namespace Agl.Behaviors;
 
 public class ControlDoubleClickBehavior<T> : Behavior<T> where T : Control
 {

@@ -1,7 +1,6 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
-using alg.Types.Configuration;
+using Agl.Types.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -119,6 +118,6 @@ internal class AppService : IAppService
     }
 
    
-    public alg.Types.Configuration.IConfiguration? GetConfiguration() => _ConfigurationFile?.GetConfiguration();
+    public Agl.Types.Configuration.IConfiguration? GetConfiguration() => _ConfigurationFile?.GetConfiguration();
     
 }

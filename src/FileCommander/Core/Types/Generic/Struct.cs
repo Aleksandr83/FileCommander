@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using VirtualFS;
 
-namespace alg.Types.Generic;
+namespace Agl.Types.Generic;
 
 public static class Struct
 {

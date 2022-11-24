@@ -1,6 +1,5 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using alg.Services;
-using alg.Types.Configuration;
+﻿using Agl.Services;
+using Agl.Types.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;

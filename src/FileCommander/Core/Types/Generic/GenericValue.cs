@@ -4,7 +4,7 @@ using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using ReactiveUI;
 
-namespace Types.Generic;
+namespace Agl.Types.Generic;
 
 public abstract class GenericValue<TValue> : ReactiveObject, INotifyPropertyChanged
 {

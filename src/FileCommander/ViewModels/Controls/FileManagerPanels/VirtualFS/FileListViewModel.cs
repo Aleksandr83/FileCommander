@@ -1,8 +1,7 @@
 using VirtualFS;
-using alg.Types;
 using FileCommander.Services;
 using System.Collections.ObjectModel;
-using alg.Helpers;
+using Agl.Helpers;
 using Avalonia.Threading;
 using System;
 using System.Threading.Tasks;

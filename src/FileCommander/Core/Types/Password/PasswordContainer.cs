@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using alg.Helpers;
+﻿using Agl.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

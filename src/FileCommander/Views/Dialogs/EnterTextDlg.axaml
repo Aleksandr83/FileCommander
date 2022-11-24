@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
         xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
         xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
-        xmlns:beh="using:alg.Behaviors"        
+        xmlns:beh="using:Agl.Behaviors"        
         mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="22"
         WindowStartupLocation="CenterOwner"
         ExtendClientAreaToDecorationsHint="True"

@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.Primitives;
 using System;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Types.Configuration;
+namespace Agl.Types.Configuration;
 
 internal class JsonConfiguration : IConfiguration
 {

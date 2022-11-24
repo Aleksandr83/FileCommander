@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

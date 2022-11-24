@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace alg.Types.Generic;
+namespace Agl.Types.Generic;
 
 
 public class EncodingConverter

@@ -1,12 +1,11 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace alg.Helpers;
+namespace Agl.Helpers;
 
 public class Base64Helper
 {

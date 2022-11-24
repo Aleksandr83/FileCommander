@@ -2,7 +2,7 @@ using System;
 using System.Reactive.Linq;
 using ReactiveUI;
 
-namespace Types.Generic;
+namespace Agl.Types.Generic;
 
 public class IntPairValue : PairGenericValue<string,int>
 {              

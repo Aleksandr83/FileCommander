@@ -1,12 +1,6 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using alg.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace alg.Services.Settings;
+namespace Agl.Services.Settings;
 
 public interface ISettingsService:IService
 {

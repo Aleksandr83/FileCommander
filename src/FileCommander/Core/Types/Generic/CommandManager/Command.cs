@@ -1,4 +1,4 @@
-namespace Types.Generic;
+namespace Agl.Types.Generic;
 
 public class Command<TCommand>
 {

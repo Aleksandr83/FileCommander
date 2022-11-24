@@ -1,4 +1,4 @@
-using alg.Helpers;
+using Agl.Helpers;
 using FileCommander.Services;
 
 namespace FileCommander;
@@ -25,7 +25,7 @@ public static class CommandRegistrator
             (Actions.CreateVirtualFile,    "Create virtual file",   CommandsId.__CREATE_VIRTUAL_FILE);
         
         commandManager.CommandRegistration
-            (Actions.CreateVirtualFolder, "Create virtual folder",  CommandsId.__CREATE_VIRTUAL_FOLDER);
+            (Actions.CreateVirtualFolder,  "Create virtual folder", CommandsId.__CREATE_VIRTUAL_FOLDER);
 
         
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace alg.Types.Generic;
+namespace Agl.Types.Generic;
 
 
 public abstract class Tree<T,TypeId> : IEnumerable

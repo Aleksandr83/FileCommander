@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Linq;
 using System;
 
-namespace Types.Generic;
+namespace Agl.Types.Generic;
 
 public static class TypeInfoExtension
 {

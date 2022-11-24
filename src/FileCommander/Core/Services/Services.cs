@@ -1,14 +1,6 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-//using alg.Data.Services.DB;
-using alg.Services;
-using alg.Services.Settings;
-using alg.Types;
+﻿using Agl.Types;
+using Agl.Services.Settings;
 using FileCommander.Services.App;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileCommander.Services;
 

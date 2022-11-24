@@ -1,13 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using alg.Types;
-using alg.Services;
+using Agl.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace alg.Types;
+
+namespace Agl.Types;
 
 public sealed class ServicesManager: GenericManager
 {

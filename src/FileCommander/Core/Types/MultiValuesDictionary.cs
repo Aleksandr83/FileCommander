@@ -1,12 +1,11 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wintellect.PowerCollections;
 
-namespace alg.Types;
+namespace Agl.Types;
 
 public class MultiValuesDictionary<TKey, TValue>
 {

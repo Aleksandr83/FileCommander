@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Reflection;
 
-namespace alg.Types.Generic;
+namespace Agl.Types.Generic;
 
 public class ArrayType
 {
