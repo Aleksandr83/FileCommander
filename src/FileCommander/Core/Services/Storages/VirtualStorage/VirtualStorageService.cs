@@ -1,3 +1,5 @@
+using FileCommander.Core.Services.Storages;
+using ImTools;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -18,7 +20,8 @@ public class StorageService : IVirtualStorageService
     string GetDefaultStorageFile()         => __DEFAULT_STORAGE_FILE;
     string GetDefaultStorageFolder()       => __DEFAULT_STORAGE_FOLDER;
 
-    public StoragePath GetCurrentPath()    => _CurrentPath;
+    public IStoragePath GetCurrentPath()    => _CurrentPath;
+   
 
     public StorageBootRecord  GetBootRecord()  => _Storage.GetBootRecord();
     
@@ -81,9 +84,50 @@ public class StorageService : IVirtualStorageService
             Directory.CreateDirectory(folder);            
     }
 
+    /*
+    StorageBootRecord IVirtualStorageService.GetBootRecord()
+    {
+        throw new NotImplementedException();
+    }
 
-    private Storage     _Storage = new();
-    private StoragePath _CurrentPath = new();
+    StorageFileTable IVirtualStorageService.GetFileTable()
+    {
+        throw new NotImplementedException();
+    }
+
+    void IVirtualStorageService.CreateNewStorage()
+    {
+        throw new NotImplementedException();
+    }
+
+    void IVirtualStorageService.LoadDefaultStorage()
+    {
+        throw new NotImplementedException();
+    }
+
+    void IVirtualStorageService.SaveDefaultStorage()
+    {
+        throw new NotImplementedException();
+    }
+
+    IStoragePath IStorageService.GetCurrentPath()
+    {
+        throw new NotImplementedException();
+    }
+
+    void IStorageService.CreateFolder(string folderName)
+    {
+        throw new NotImplementedException();
+    }
+
+    void IStorageService.CreateFile(string fileName)
+    {
+        throw new NotImplementedException();
+    }
+    */
+
+    private Storage _Storage = new();
+    private VirtualFS.StoragePath _CurrentPath = new();
 
     string __DEFAULT_STORAGE_FOLDER = System.IO.Path.Combine
                 (

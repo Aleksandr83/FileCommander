@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
              xmlns:conv="using:GUI.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="FileCommander.Views.BootRecordView">
+             x:Class="FileCommander.Views.Panels.VirtualFS.BootRecordView">
 
   <UserControl.Resources>  
     <conv:ToHexStringConverter    x:Key="ToHexStringConverter"/>

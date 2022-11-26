@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Agl.Helpers;
 using Agl.Types.Generic;
+using FileCommander.Models.FileManagerPanels.VirtualFS;
 using FileCommander.Services;
 using Serilog;
 

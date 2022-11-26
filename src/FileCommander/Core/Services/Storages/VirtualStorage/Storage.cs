@@ -20,12 +20,12 @@ public class Storage
     {                      
     }    
 
-    internal void CreateFolder(VirtualFS.Path path,string folderName)
+    internal void CreateFolder(VirtualFS.StoragePath path,string folderName)
     {                
         _FileTable.CreateFolder(path, folderName);
     }
     
-    internal void CreateFile(VirtualFS.Path path,string fileName)
+    internal void CreateFile(VirtualFS.StoragePath path,string fileName)
     {
         _FileTable.CreateFile(path, fileName);
     }

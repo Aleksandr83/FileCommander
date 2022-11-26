@@ -4,10 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!-- <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable> -->
-    
+       
     <!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
     <TrimMode>copyused</TrimMode>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
@@ -51,5 +48,13 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
 
 	  <PackageReference Include="XamlNameReferenceGenerator" Version="1.4.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\Controls\FileManagerPanels\VirtualFS\VirtualFsView.axaml.cs">
+      <DependentUpon>VirtualFsView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Services\Storages\RealStorage\" />
   </ItemGroup>
 </Project>

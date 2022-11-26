@@ -5,7 +5,7 @@ using FileCommander.Services;
 
 namespace VirtualFS;
 
-public class StoragePath : VirtualFS.Path
+public class StoragePath : FileCommander.Core.Services.Storages.StoragePath
 {
     const string __UPDATE_STORAGE_PATH_EVENT = EventNames.__UPDATE_STORAGE_PATH_EVENT;
 
@@ -15,9 +15,8 @@ public class StoragePath : VirtualFS.Path
         EventManager?.RaiseEvent(__UPDATE_STORAGE_PATH_EVENT,this, new EventManagerArgs()); 
     }
 
-    public UInt32 GetCurrentFolderId() => _CurrentFolderId;
-
-    public void Set(UInt32 folderId)
+    public override string GetRoot() => _ROOT_DIR;
+    public override void Set(UInt32 folderId)
     {
         string folderName;
         var itemsInCurrentDir = StorageService?.GetFileTable()
@@ -51,7 +50,7 @@ public class StoragePath : VirtualFS.Path
         base.Clear();
     }
 
-    public bool IsRootDirectory()
+    public override bool IsRootDirectory()
     {
         return ((StorageService?.GetBootRecord()?.GetRootDirectoryId()??uint.MaxValue) == _CurrentFolderId);
     }
@@ -90,8 +89,7 @@ public class StoragePath : VirtualFS.Path
 
     #endregion Properties
 
-
-    private UInt32 _CurrentFolderId = 0;
+    readonly string _ROOT_DIR = System.IO.Path.DirectorySeparatorChar.ToString();
 
     private IEventManagerService?   _EventManager;
     private IVirtualStorageService? _StorageService;

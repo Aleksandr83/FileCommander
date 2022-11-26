@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Agl.Types.Generic;
-
+using FileCommander.Models.FileManagerPanels.VirtualFS;
 
 namespace VirtualFS;
 

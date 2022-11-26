@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:conv="using:GUI.Converters"
              xmlns:localViews="using:FileCommander.Views"
+             xmlns:virtualFsView="using:FileCommander.Views.Panels.VirtualFS"             
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FileCommander.Views.FileTableView">
 
@@ -11,7 +12,7 @@
      <Grid RowDefinitions="50*, 3, 50*">
         <localViews:FileRecordsView />
         <GridSplitter Grid.Row="1"  />
-        <localViews:FileDataRecordsView Grid.Row="2" />
+        <virtualFsView:FileDataRecordsView Grid.Row="2" />
      </Grid>
 
 </UserControl>

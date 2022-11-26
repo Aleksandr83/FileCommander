@@ -4,8 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Agl.Helpers;
 using Avalonia.Threading;
+using FileCommander.Models.FileManagerPanels.VirtualFS;
 using FileCommander.Services;
-using VirtualFS;
 
 namespace FileCommander.ViewModels.Controls.FileManagerPanels.VirtualFS;
 

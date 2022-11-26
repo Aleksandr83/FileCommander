@@ -5,9 +5,9 @@ using VirtualFS;
 
 namespace FileCommander.Services;
 
-public interface IVirtualStorageService : IService
+public interface IVirtualStorageService : IStorageService
 {
-    internal StoragePath GetCurrentPath();
+    
 
     internal StorageBootRecord  GetBootRecord();    
 
@@ -16,6 +16,5 @@ public interface IVirtualStorageService : IService
     internal void CreateNewStorage();
     internal void LoadDefaultStorage();
     internal void SaveDefaultStorage();
-    internal void CreateFolder(string folderName);
-    internal void CreateFile(string fileName);
+    
 }

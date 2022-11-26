@@ -9,7 +9,7 @@ using Agl.Types.Generic;
 using Mimica.Types.CRC;
 using System.Reflection;
 using System.Runtime.InteropServices;
-
+using FileCommander.Models.FileManagerPanels.VirtualFS;
 
 namespace VirtualFS;
 
@@ -73,19 +73,19 @@ public class StorageFileTable : Tree<FileRecord, UInt32>
         EventManager?.RaiseEvent(__UPDATE_FILEREC_EVENT,this, new EventManagerArgs());
     }
 
-    public void CreateFile(VirtualFS.Path path,string fileName)
+    public void CreateFile(VirtualFS.StoragePath path,string fileName)
     {
         CreateFileRecord(path, fileName, 0);
     }
 
-    public void CreateFolder(VirtualFS.Path path,string folderName)
+    public void CreateFolder(VirtualFS.StoragePath path,string folderName)
     {
         CreateFileRecord(path, folderName, 1);
     }
 
-    public void CreateFileRecord(VirtualFS.Path path,string name,Byte isDirectory)
+    public void CreateFileRecord(VirtualFS.StoragePath path,string name,Byte isDirectory)
     {
-        Path.PathItem? parent = path?.Last();          
+        StoragePath.PathItem? parent = path?.Last();          
         UInt32? parentId      = (parent == null)? GetRootDirectoryId() : parent?.Id;
         Byte[]  itemName      = EncodingConverter.ToAssciByteArray(name);
         

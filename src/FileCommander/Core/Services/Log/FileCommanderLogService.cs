@@ -1,5 +1,5 @@
 using Agl.Helpers;
-using VirtualFS;
+using FileCommander.Models.FileManagerPanels.VirtualFS;
 
 namespace FileCommander.Services;
 

@@ -17,8 +17,10 @@ internal sealed class Services
         ServicesManager.Registration<IEventManagerService>
             ((IEventManagerService?)ServicesFactory.Create<IEventManagerService>());
         ServicesManager.Registration<ICommandManagerService>
-            ((ICommandManagerService?)ServicesFactory.Create<ICommandManagerService>()); 
+            ((ICommandManagerService?)ServicesFactory.Create<ICommandManagerService>());
         ServicesManager.Registration<IVirtualStorageService>
-            ((IVirtualStorageService?)ServicesFactory.Create<IVirtualStorageService>());           
+            ((IVirtualStorageService?)ServicesFactory.Create<IVirtualStorageService>());
+        ServicesManager.Registration<IStorageSelectorService>
+            ((IStorageSelectorService?)ServicesFactory.Create<IStorageSelectorService>());                  
     }
 }

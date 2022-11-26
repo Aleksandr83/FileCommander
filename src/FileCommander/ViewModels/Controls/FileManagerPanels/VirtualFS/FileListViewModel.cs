@@ -1,4 +1,3 @@
-using VirtualFS;
 using FileCommander.Services;
 using System.Collections.ObjectModel;
 using Agl.Helpers;
@@ -8,6 +7,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Input;
+using FileCommander.Models.FileManagerPanels.VirtualFS;
 
 namespace FileCommander.ViewModels.Controls.FileManagerPanels.VirtualFS;
 

@@ -1,19 +1,18 @@
-using VirtualFS;
 using System.Collections.ObjectModel;
 using FileCommander.Services;
 using Agl.Helpers;
-
+using FileCommander.Models.FileManagerPanels.VirtualFS;
 
 namespace FileCommander.ViewModels.Controls.FileManagerPanels.VirtualFS;
 
 
-public class DeviceFsViewModel : ViewModelBase
+public class VirtualFsViewModel : ViewModelBase
 {
 
     const string __UPDATE_STORAGE_PATH_EVENT = EventNames.__UPDATE_STORAGE_PATH_EVENT;
 
 
-    public DeviceFsViewModel()
+    public VirtualFsViewModel()
     {
         EventManager?.Registred(__UPDATE_STORAGE_PATH_EVENT, OnUpdatePath);
     }

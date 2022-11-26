@@ -5,15 +5,15 @@ using FileCommander.ViewModels.Controls.FileManagerPanels.VirtualFS;
 
 namespace FileCommander.Views;
 
-public partial class DeviceFsView : UserControl
+public partial class VirtualFsView : UserControl
 {
-    public DeviceFsView()
+    public VirtualFsView()
     {
         InitializeComponent();
         
         DataContext = _ViewModel;
     }
 
-    private DeviceFsViewModel _ViewModel = new ();
+    private VirtualFsViewModel _ViewModel = new ();
 
 }

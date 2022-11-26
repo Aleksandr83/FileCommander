@@ -1,5 +1,6 @@
 using Agl.Helpers;
 using Agl.Types.Generic;
+using FileCommander.Models.FileManagerPanels.VirtualFS;
 using FileCommander.Services;
 using Mimica.Types.CRC;
 

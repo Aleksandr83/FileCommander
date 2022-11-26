@@ -21,6 +21,8 @@ internal sealed class ServicesFactory
             return (IEventManagerService?)Activator.CreateInstance(typeof(EventManagerService));
         if (typeof(T) == typeof(ICommandManagerService))
             return (ICommandManagerService?)Activator.CreateInstance(typeof(CommandManagerService));
+        if (typeof(T) == typeof(IStorageSelectorService))
+            return (IStorageSelectorService?)Activator.CreateInstance(typeof(StorageSelectorService));
         if (typeof(T) == typeof(IVirtualStorageService))
             return (IVirtualStorageService?)Activator.CreateInstance(typeof(StorageService));          
         
