@@ -12,4 +12,7 @@ namespace FileCommander.Services;
 internal interface IStorageSelectorService : IService
 {
     IList<IStorageInfo> GetAll();
+
+    //void SelectStorageLeftPanel(IStorageInfo storageInfo);
+    //void SelectStorageRightPanel(IStorageInfo storageInfo);
 }

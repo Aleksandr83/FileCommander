@@ -8,7 +8,7 @@ using Avalonia.Threading;
 using FileCommander.ViewModels.Controls.FileManagerPanels.VirtualFS;
 using VirtualFS;
 
-namespace FileCommander.Views;
+namespace FileCommander.Views.Panels.VirtualFS;
 
 public partial class FileListView : UserControl
 {   

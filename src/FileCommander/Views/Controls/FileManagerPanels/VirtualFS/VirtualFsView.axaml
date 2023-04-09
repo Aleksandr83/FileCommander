@@ -6,7 +6,7 @@
              xmlns:virtualFsView="using:FileCommander.Views.Panels.VirtualFS"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FileCommander.Views.VirtualFsView">
-  <UserControl.Styles>
+  <UserControl.Styles>    
     <Style Selector="TabControl">
       <Setter Property="Background" Value="#F0F0F0"/>
       <!-- <Setter Property="Height" Value="120"/> -->
@@ -107,7 +107,7 @@
             </DockPanel>
 
             <DockPanel Grid.Row="2">
-              <localViews:FileListView /> 
+              <virtualFsView:FileListView /> 
             </DockPanel>            
             
           </Grid>
@@ -116,7 +116,7 @@
           <virtualFsView:BootRecordView />
         </TabItem>
         <TabItem Header="FileRecordsTable">
-          <localViews:FileTableView />
+          <virtualFsView:FileTableView />
          
         </TabItem>
       </TabControl>

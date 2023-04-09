@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using FileCommander.ViewModels;
 
-namespace FileCommander.Views;
+namespace FileCommander.Views.Panels.VirtualFS;
 
 public partial class FileTableView : UserControl
 {

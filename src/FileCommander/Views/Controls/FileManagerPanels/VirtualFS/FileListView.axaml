@@ -7,7 +7,7 @@
              xmlns:conv="using:GUI.Converters"
              xmlns:beh="using:FileComander.GUI.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="FileCommander.Views.FileListView">
+             x:Class="FileCommander.Views.Panels.VirtualFS.FileListView">
 
   <UserControl.Resources>   
     <conv:AsciiBytesToUtfStringConverter  x:Key="AsciiBytesToUtfStringConverter"/>   

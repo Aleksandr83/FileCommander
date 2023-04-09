@@ -24,7 +24,7 @@ internal sealed class ServicesFactory
         if (typeof(T) == typeof(IStorageSelectorService))
             return (IStorageSelectorService?)Activator.CreateInstance(typeof(StorageSelectorService));
         if (typeof(T) == typeof(IVirtualStorageService))
-            return (IVirtualStorageService?)Activator.CreateInstance(typeof(StorageService));          
+            return (IVirtualStorageService?)Activator.CreateInstance(typeof(VirtualStorageService));          
         
         return null;
     }

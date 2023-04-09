@@ -8,11 +8,11 @@ using static System.Environment;
 
 namespace FileCommander.Services;
 
-public class StorageService : IVirtualStorageService
+public class VirtualStorageService : IVirtualStorageService
 {
     const string __DEFAULT_STORAGE_FILE   = "storege.pfs";
     
-    public StorageService()
+    public VirtualStorageService()
     {
         CheckAndCreateDefaultDir();
     }
@@ -82,49 +82,7 @@ public class StorageService : IVirtualStorageService
         var folder = GetDefaultStorageFolder();
         if (!Directory.Exists(folder))
             Directory.CreateDirectory(folder);            
-    }
-
-    /*
-    StorageBootRecord IVirtualStorageService.GetBootRecord()
-    {
-        throw new NotImplementedException();
-    }
-
-    StorageFileTable IVirtualStorageService.GetFileTable()
-    {
-        throw new NotImplementedException();
-    }
-
-    void IVirtualStorageService.CreateNewStorage()
-    {
-        throw new NotImplementedException();
-    }
-
-    void IVirtualStorageService.LoadDefaultStorage()
-    {
-        throw new NotImplementedException();
-    }
-
-    void IVirtualStorageService.SaveDefaultStorage()
-    {
-        throw new NotImplementedException();
-    }
-
-    IStoragePath IStorageService.GetCurrentPath()
-    {
-        throw new NotImplementedException();
-    }
-
-    void IStorageService.CreateFolder(string folderName)
-    {
-        throw new NotImplementedException();
-    }
-
-    void IStorageService.CreateFile(string fileName)
-    {
-        throw new NotImplementedException();
-    }
-    */
+    }    
 
     private Storage _Storage = new();
     private VirtualFS.StoragePath _CurrentPath = new();

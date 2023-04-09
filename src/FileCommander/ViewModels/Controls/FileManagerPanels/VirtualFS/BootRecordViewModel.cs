@@ -9,7 +9,6 @@ using FileCommander.Services;
 
 namespace FileCommander.ViewModels.Controls.FileManagerPanels.VirtualFS;
 
-
 public class BootRecordViewMode : ViewModelBase
 {
     const string __UPDATE_BOOTREC_EVENT = EventNames.__UPDATE_BOOTREC_EVENT;

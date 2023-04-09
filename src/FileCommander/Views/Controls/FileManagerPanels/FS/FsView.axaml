@@ -2,7 +2,81 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fsView="using:FileCommander.Views.Panels.FS"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="FileCommander.Views.FsView">
-  Welcome to Avalonia!
+             x:Class="FileCommander.Views.FsView"
+             >
+  
+  <UserControl.Styles>
+    <Style Selector="TabControl">
+      <Setter Property="Background" Value="#F0F0F0"/>
+      <!-- <Setter Property="Height" Value="120"/> -->
+    </Style>
+    <Style Selector="TabControl WrapPanel">
+      <Setter Property="Background" Value="#2B579A"/>
+    </Style>
+
+    <Style Selector="TabItem">
+      <Setter Property="FontSize" Value="18"/>
+      <Setter Property="Height" Value="34"/>
+      <!-- <Setter Property="VerticalAlignment" Value="Center"/> -->
+      <Setter Property="Background" Value="#2B579A"/>
+      <Setter Property="Foreground" Value="#F0F0F0"/>
+      <Setter Property="Margin" Value="0 0 0 0"/>
+      <Setter Property="Padding" Value="15 0"/>
+    </Style>
+    <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="Yellow"/>
+    </Style>
+
+    <Style Selector="TabItem:focus">
+      <Setter Property="Foreground" Value="#2B579A"/>
+      <Setter Property="Margin" Value="0 0 0 0"/>
+      <Setter Property="Padding" Value="15 0"/>
+    </Style>
+    <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="#f0f0f0"/>
+    </Style>
+
+    <Style Selector="TabItem:selected">
+      <Setter Property="Foreground" Value="#2B579A"/>
+      <Setter Property="Margin" Value="0 0 0 0"/>
+      <Setter Property="Padding" Value="15 0"/>
+    </Style>
+    <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="#f0f0f0"/>
+    </Style>
+  </UserControl.Styles>
+  
+  <Grid>    
+    
+      <TabControl>
+        <TabItem Header="List of files">
+          <Grid RowDefinitions="64, 32, *">
+            
+            <DockPanel Grid.Row="1">
+              <StackPanel Orientation="Horizontal">
+                <Label Content="Path:" />
+                <Label Content="{Binding Path}" />
+              </StackPanel>              
+            </DockPanel>
+
+            <DockPanel Grid.Row="2">
+              <fsView:FileListView />
+            </DockPanel>            
+            
+          </Grid>
+        </TabItem>
+        <!--<TabItem Header="BootRecord">
+          <virtualFsView:BootRecordView />
+        </TabItem>
+        <TabItem Header="FileRecordsTable">
+          <localViews:FileTableView />
+         
+        </TabItem>-->
+      </TabControl>
+    
+   
+  </Grid>
+  
 </UserControl>

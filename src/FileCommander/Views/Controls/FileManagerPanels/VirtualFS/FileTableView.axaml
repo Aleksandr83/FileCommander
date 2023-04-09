@@ -6,11 +6,11 @@
              xmlns:localViews="using:FileCommander.Views"
              xmlns:virtualFsView="using:FileCommander.Views.Panels.VirtualFS"             
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="FileCommander.Views.FileTableView">
+             x:Class="FileCommander.Views.Panels.VirtualFS.FileTableView">
 
 
      <Grid RowDefinitions="50*, 3, 50*">
-        <localViews:FileRecordsView />
+        <virtualFsView:FileRecordsView />
         <GridSplitter Grid.Row="1"  />
         <virtualFsView:FileDataRecordsView Grid.Row="2" />
      </Grid>
