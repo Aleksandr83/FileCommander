@@ -55,7 +55,7 @@ public class FileRecordsViewModel : ViewModelBase
         private set
         {
             _Items = value;
-            OnPropertyChanged("Items");
+            OnPropertyChanged(nameof(Items));
         }
     }
 

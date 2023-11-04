@@ -52,7 +52,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _BootRecord.RecordSize = value;
-            OnPropertyChanged("RecordSize");
+            OnPropertyChanged(nameof(RecordSize));
         }
     }
 
@@ -62,7 +62,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _BootRecord.Version = value;
-            OnPropertyChanged("Version");
+            OnPropertyChanged(nameof(Version));
         }
     }
 
@@ -72,7 +72,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _BootRecord.IsSupportCompression = value;
-            OnPropertyChanged("IsSupportCompression");
+            OnPropertyChanged(nameof(IsSupportCompression));
         }
     }
 
@@ -82,7 +82,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _BootRecord.IsSupportEncription = value;
-            OnPropertyChanged("IsSupportEncription");
+            OnPropertyChanged(nameof(IsSupportEncription));
         }
     }
 
@@ -92,7 +92,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _BootRecord.RootDirectoryId = value;
-            OnPropertyChanged("RootDirectoryId");
+            OnPropertyChanged(nameof(RootDirectoryId));
         }
     }
     public uint OffsetFileTable
@@ -101,7 +101,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _BootRecord.OffsetFileTable = value;
-            OnPropertyChanged("OffsetFileTable");
+            OnPropertyChanged(nameof(OffsetFileTable));
         }
     }
     public uint CountRecordsInTable
@@ -110,7 +110,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _BootRecord.CountRecordsInTable = value;
-            OnPropertyChanged("CountRecordsInTable");
+            OnPropertyChanged(nameof(CountRecordsInTable));
         }
     }
 
@@ -120,7 +120,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _BootRecord.Crc = value;
-            OnPropertyChanged("Crc");
+            OnPropertyChanged(nameof(Crc));
         }
     }
 
@@ -131,7 +131,7 @@ public class BootRecordViewMode : ViewModelBase
         set
         {
             _IsCorrectCrc = value;
-            OnPropertyChanged("IsCorrectCrc");
+            OnPropertyChanged(nameof(IsCorrectCrc));
         }
     }
 

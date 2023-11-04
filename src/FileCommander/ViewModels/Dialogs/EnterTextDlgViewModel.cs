@@ -19,7 +19,7 @@ namespace FileCommander.ViewModels
             set
             {
                 _Title = value;
-                OnPropertyChanged("Title");
+                OnPropertyChanged(nameof(Title));
             }
         }
 
@@ -29,7 +29,7 @@ namespace FileCommander.ViewModels
             set
             {
                 _Text = value;
-                OnPropertyChanged("Text");
+                OnPropertyChanged(nameof(Text));
             }
         }
         
@@ -39,7 +39,7 @@ namespace FileCommander.ViewModels
             set
             {
                 _Watermark = value;
-                OnPropertyChanged("Watermark");
+                OnPropertyChanged(nameof(Watermark));
             }
         }
 
@@ -49,16 +49,16 @@ namespace FileCommander.ViewModels
             set
             {
                 _Height = value;
-                OnPropertyChanged("Height");
+                OnPropertyChanged(nameof(Height));
             }
         }
 
         #endregion Properties
         
 
-        private string _Text = "";
-        private string _Watermark = "";      
-        private string _Title = "";
+        private string _Text;
+        private string _Watermark;      
+        private string _Title;
         
         private double _Height;
     }

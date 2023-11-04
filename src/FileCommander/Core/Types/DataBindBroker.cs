@@ -28,7 +28,7 @@ public class DataBindBroker<T> : INotifyPropertyChanged
         set
         {
             _value = value;
-            OnPropertyChanged("Value");
+            OnPropertyChanged(nameof(Value));
         }
     }
 

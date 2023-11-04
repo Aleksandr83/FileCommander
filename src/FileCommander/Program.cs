@@ -25,17 +25,17 @@ public static class Program
         var builder = BuildAvaloniaApp();
         //InitializeLogging();
         
-        if (args.Contains("--fbdev"))
-        {
-            SilenceConsole();
-            return builder.StartLinuxFbDev(args, scaling: GetScaling());
-        }
-        else if (args.Contains("--drm"))
-        {
-            SilenceConsole();
-            return builder.StartLinuxDrm(args, scaling: GetScaling());
-        }
-        else
+        //if (args.Contains("--fbdev"))
+        //{
+        //    SilenceConsole();
+        //    return builder.StartLinuxFbDev(args, scaling: GetScaling());
+        //}
+        //else if (args.Contains("--drm"))
+        //{
+        //    SilenceConsole();
+        //    return builder.StartLinuxDrm(args, scaling: GetScaling());
+        //}
+        //else
             return builder.StartWithClassicDesktopLifetime(args);
     }
 

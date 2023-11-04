@@ -29,7 +29,7 @@ public class ViewModelBase : ReactiveObject, INotifyPropertyChanged
         set
         {
             _IsWindowsOS = value;
-            OnPropertyChanged("IsWindowsOS");
+            OnPropertyChanged(nameof(IsWindowsOS));
         }
     }
 

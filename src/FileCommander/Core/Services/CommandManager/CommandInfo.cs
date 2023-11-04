@@ -16,9 +16,9 @@ public class CommandInfo
     }
 
     internal string    _CommandId;
-    internal string    _Description = "";
+    internal string    _Description;
     internal ICommand? _Command;
-    internal string    _Gesture = "";
+    internal string    _Gesture;
 
     internal CommandFilter? _CommandFilter = null;
 

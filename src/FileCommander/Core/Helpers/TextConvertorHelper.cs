@@ -42,7 +42,7 @@ public static class TextConvertorHelper
 
     public static string AsciiBytesToUtfString(Byte[]? value)
     {
-        if ((value == null) || (value?.Length == 0)) return "";
+        if ((value == null) || (value?.Length == 0)) return string.Empty;
 
         value = (value != null)? value: new byte[] {}; // ?            
         byte[] utf8Array = Encoding.Convert(Encoding.ASCII, Encoding.UTF8, (Byte[])value);

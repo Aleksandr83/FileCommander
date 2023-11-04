@@ -131,7 +131,7 @@ public class FileListViewModel : ViewModelBase
         set
         {
             _SelectedPlace = value;
-            OnPropertyChanged("SelectedPlace");
+            OnPropertyChanged(nameof(SelectedPlace));
         }
     }
 

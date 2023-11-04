@@ -34,7 +34,7 @@ public partial class EnterTextDlg : Window
         }
         else if (e.Key == Key.Escape)
         {
-            DialogResult = "";           
+            DialogResult = string.Empty;           
             Close();
         }
     }
@@ -48,7 +48,7 @@ public partial class EnterTextDlg : Window
 
     #region Properties
 
-    public string DialogResult { get; protected set; } = "";
+    public string DialogResult { get; protected set; } = string.Empty;
 
     public new String Title
     {

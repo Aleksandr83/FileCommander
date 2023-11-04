@@ -211,39 +211,39 @@ public class StorageFileTable : Tree<FileRecord, UInt32>
     
     FileRecord SetFieldFileRecord(FileRecord fileRecord, FieldInfo field, dynamic value)
     {      
-        if (field.Name == "Crc")
+        if (field.Name == nameof(FileRecord.Crc))
             fileRecord.Crc = (Byte)value;
-        else if (field.Name == "RecordSize")
+        else if (field.Name == nameof(FileRecord.RecordSize))
             fileRecord.RecordSize = (UInt16)value;
-        else if (field.Name == "IsDeleted")
+        else if (field.Name == nameof(FileRecord.IsDeleted))
             fileRecord.IsDeleted = (Byte)value;
-        else if (field.Name == "NextFileRecord")
+        else if (field.Name == nameof(FileRecord.NextFileRecord))
             fileRecord.NextFileRecord = (UInt32)value;
-        else if (field.Name == "Id")
+        else if (field.Name == nameof(FileRecord.Id))
             fileRecord.Id = (UInt32)value;
-        else if (field.Name == "IsDirectory")
+        else if (field.Name == nameof(FileRecord.IsDirectory))
             fileRecord.IsDirectory = (Byte)value;
-        else if (field.Name == "ParentId")
+        else if (field.Name == nameof(FileRecord.ParentId))
             fileRecord.ParentId = (UInt32)value;
-        else if (field.Name == "IsCompressed")
+        else if (field.Name == nameof(FileRecord.IsCompressed))
             fileRecord.IsCompressed = (Byte)value;
-        else if (field.Name == "CompressedType")
+        else if (field.Name == nameof(FileRecord.CompressedType))
             fileRecord.CompressedType = (Byte)value;
-        else if (field.Name == "IsEncripted")
+        else if (field.Name == nameof(FileRecord.IsEncripted))
             fileRecord.IsEncripted = (Byte)value;
-        else if (field.Name == "Alg")
+        else if (field.Name == nameof(FileRecord.Alg))
             fileRecord.Alg = (UInt16)value;
-        else if (field.Name == "DataSize")
+        else if (field.Name == nameof(FileRecord.DataSize))
             fileRecord.DataSize = (UInt32)value;
-        else if (field.Name == "DataBlockCount")
+        else if (field.Name == nameof(FileRecord.DataBlockCount))
             fileRecord.DataBlockCount = (UInt32)value;
-        else if (field.Name == "FirstDataBlockOffset")
+        else if (field.Name == nameof(FileRecord.FirstDataBlockOffset))
             fileRecord.FirstDataBlockOffset = (UInt32)value;
-        else if (field.Name == "EncodingNameType")
+        else if (field.Name == nameof(FileRecord.EncodingNameType))
             fileRecord.EncodingNameType = (Byte)value;
-        else if (field.Name == "NameLength")
+        else if (field.Name == nameof(FileRecord.NameLength))
             fileRecord.NameLength = (Byte)value;
-        else if (field.Name == "Name")            
+        else if (field.Name == nameof(FileRecord.Name))            
             fileRecord.Name = value;  
 
         return fileRecord;

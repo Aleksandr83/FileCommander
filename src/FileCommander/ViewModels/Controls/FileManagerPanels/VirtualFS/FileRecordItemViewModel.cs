@@ -35,7 +35,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.Crc = value;
-            OnPropertyChanged("Crc");
+            OnPropertyChanged(nameof(Crc));
         }
     }
 
@@ -45,7 +45,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.RecordSize = value;
-            OnPropertyChanged("RecordSize");
+            OnPropertyChanged(nameof(RecordSize));
         }
     }
 
@@ -55,7 +55,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.IsDeleted = value;
-            OnPropertyChanged("IsDeleted");
+            OnPropertyChanged(nameof(IsDeleted));
         }
     }
 
@@ -65,7 +65,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.NextFileRecord = value;
-            OnPropertyChanged("NextFileRecord");
+            OnPropertyChanged(nameof(NextFileRecord));
         }
     }
 
@@ -75,7 +75,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.Id = value;
-            OnPropertyChanged("Id");
+            OnPropertyChanged(nameof(Id));
         }
     }
 
@@ -85,7 +85,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.IsDirectory = value;
-            OnPropertyChanged("IsDirectory");
+            OnPropertyChanged(nameof(IsDirectory));
         }
     }
 
@@ -95,7 +95,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.ParentId = value;
-            OnPropertyChanged("ParentId");
+            OnPropertyChanged(nameof(ParentId));
         }
     }
 
@@ -105,7 +105,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.IsCompressed = value;
-            OnPropertyChanged("IsCompressed");
+            OnPropertyChanged(nameof(IsCompressed));
         }
     }
 
@@ -115,7 +115,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.CompressedType = value;
-            OnPropertyChanged("CompressedType");
+            OnPropertyChanged(nameof(CompressedType));
         }
     }
 
@@ -125,7 +125,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.IsEncripted = value;
-            OnPropertyChanged("IsEncripted");
+            OnPropertyChanged(nameof(IsEncripted));
         }
     }
 
@@ -135,7 +135,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.Alg = value;
-            OnPropertyChanged("Alg");
+            OnPropertyChanged(nameof(Alg));
         }
     }
 
@@ -145,7 +145,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.DataSize = value;
-            OnPropertyChanged("DataSize");
+            OnPropertyChanged(nameof(DataSize));
         }
     }
 
@@ -155,7 +155,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.DataBlockCount = value;
-            OnPropertyChanged("DataBlockCount");
+            OnPropertyChanged(nameof(DataBlockCount));
         }
     }
 
@@ -165,7 +165,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.FirstDataBlockOffset = value;
-            OnPropertyChanged("FirstDataBlockOffset");
+            OnPropertyChanged(nameof(FirstDataBlockOffset));
         }
     }
 
@@ -175,7 +175,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.EncodingNameType = value;
-            OnPropertyChanged("EncodingNameType");
+            OnPropertyChanged(nameof(EncodingNameType));
         }
     }
 
@@ -185,7 +185,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.NameLength = value;
-            OnPropertyChanged("NameLength");
+            OnPropertyChanged(nameof(NameLength));
         }
     }
 
@@ -195,7 +195,7 @@ public class FileRecordItemViewModel : ViewModelBase
         set
         {
             _FileRecord.Name = value;
-            OnPropertyChanged("Name");
+            OnPropertyChanged(nameof(Name));
         }
     }
 

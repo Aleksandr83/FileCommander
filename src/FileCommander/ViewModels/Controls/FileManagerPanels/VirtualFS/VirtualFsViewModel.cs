@@ -62,7 +62,7 @@ public class VirtualFsViewModel : ViewModelBase
         set
         {
             _Path = value;
-            OnPropertyChanged("Path");
+            OnPropertyChanged(nameof(Path));
         }
     }
 

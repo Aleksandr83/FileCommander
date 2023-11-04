@@ -1,5 +1,6 @@
 using Agl.Helpers;
 using FileCommander.Models.FileManagerPanels.VirtualFS;
+using System.Text;
 
 namespace FileCommander.Services;
 
@@ -10,21 +11,20 @@ public class FileCommanderLogService : LogService, IFileCommanderLogService
     }
 
     public void LogBootRecord(string message, BootRecord bootRecord)
-    {
-        string s = "";
-
-        s += "RecordSize:{@RecordSize}, ";
-        s += "Version:{@Version}, "; 
-        s += "IsSupportCompression:{@IsSupportCompression}, ";
-        s += "IsSupportEncription:{@IsSupportEncription}, ";
-        s += "RootDirectoryId:{@RootDirectoryId}, ";
-        s += "OffsetFileTable:{@OffsetFileTable}, ";
-        s += "CountRecordsInTable:{@CountRecordsInTable}, ";
-        s += "DataBlockSize:{@DataBlockSize}, ";
-        s += "Crc:{@Crc}";
+    {        
+        var sb = new StringBuilder();
+        sb.Append("RecordSize:{@RecordSize}, ");
+        sb.Append("Version:{@Version}, "); 
+        sb.Append("IsSupportCompression:{@IsSupportCompression}, ");
+        sb.Append("IsSupportEncription:{@IsSupportEncription}, ");
+        sb.Append("RootDirectoryId:{@RootDirectoryId}, ");
+        sb.Append("OffsetFileTable:{@OffsetFileTable}, ");
+        sb.Append("CountRecordsInTable:{@CountRecordsInTable}, ");
+        sb.Append("DataBlockSize:{@DataBlockSize}, ");
+        sb.Append("Crc:{@Crc}");
 
         Information
-        (   message + " " + s, 
+        (   $"{message} {sb.ToString()}", 
             TextConvertorHelper.IntToHex(bootRecord.RecordSize),
             bootRecord.Version,
             bootRecord.IsSupportCompression,
@@ -39,28 +39,27 @@ public class FileCommanderLogService : LogService, IFileCommanderLogService
 
     public void LogFileRecord(string message, FileRecord fileRecord)
     {
-        string s = "";
-
-        s += "Crc:{@Crc}, ";
-        s += "RecordSize:{@RecordSize}, ";
-        s += "IsDeleted:{@IsDeleted}, ";
-        s += "NextFileRecord:{@NextFileRecord}, ";
-        s += "Id:{@Id}, ";
-        s += "IsDirectory:{@IsDirectory}, ";
-        s += "ParentId{@ParentId}, ";
-        s += "IsCompressed{@IsCompressed}, ";
-        s += "CompressedType:{@CompressedType}, ";
-        s += "IsEncripted:{@IsEncripted}, ";
-        s += "Alg:{@Alg}, ";
-        s += "DataSize:{@DataSize}, ";
-        s += "DataBlockCount:{@DataBlockCount}, ";
-        s += "FirstDataBlockOffset:{@FirstDataBlockOffset}, ";
-        s += "EncodingNameType:{@EncodingNameType}, ";
-        s += "NameLength:{@NameLength}, ";
-        s += "Name:{@Name}";
+        var sb = new StringBuilder();
+        sb.Append("Crc:{@Crc}, ");
+        sb.Append("RecordSize:{@RecordSize}, ");
+        sb.Append("IsDeleted:{@IsDeleted}, ");
+        sb.Append("NextFileRecord:{@NextFileRecord}, ");
+        sb.Append("Id:{@Id}, ");
+        sb.Append("IsDirectory:{@IsDirectory}, ");
+        sb.Append("ParentId{@ParentId}, ");
+        sb.Append("IsCompressed{@IsCompressed}, ");
+        sb.Append("CompressedType:{@CompressedType}, ");
+        sb.Append("IsEncripted:{@IsEncripted}, ");
+        sb.Append("Alg:{@Alg}, ");
+        sb.Append("DataSize:{@DataSize}, ");
+        sb.Append("DataBlockCount:{@DataBlockCount}, ");
+        sb.Append("FirstDataBlockOffset:{@FirstDataBlockOffset}, ");
+        sb.Append("EncodingNameType:{@EncodingNameType}, ");
+        sb.Append("NameLength:{@NameLength}, ");
+        sb.Append("Name:{@Name}");
 
         Information
-        (   message + " " + s, 
+        (   $"{message} {sb.ToString()}", 
             TextConvertorHelper.IntToHex(fileRecord.Crc),
             TextConvertorHelper.IntToHex(fileRecord.RecordSize),
             fileRecord.IsDeleted,

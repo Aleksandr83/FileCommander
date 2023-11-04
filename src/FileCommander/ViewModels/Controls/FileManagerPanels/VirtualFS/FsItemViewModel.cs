@@ -8,7 +8,7 @@ public class FsItemViewModel : ViewModelBase, IFsItem
     public FsItemViewModel(FileRecord fileRecord)
     {
         _FileRecord = fileRecord;
-        OnPropertyChanged("Name");
+        OnPropertyChanged(nameof(Name));
     }
 
     public FileRecord GetValue() => _FileRecord;

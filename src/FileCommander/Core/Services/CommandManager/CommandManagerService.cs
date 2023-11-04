@@ -10,7 +10,7 @@ namespace FileCommander.Services;
            
       }
 
-      public string CommandRegistration(Action<object> action, string description="", string commandId = "") 
+      public string CommandRegistration(Action<object> action, string description = "", string commandId = "") 
       {              
            CommandInfo cmd = new ();   
            //commandId       = cmd._CommandId;     

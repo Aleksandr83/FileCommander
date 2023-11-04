@@ -2,7 +2,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="using:GUI.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FileCommander.Views.Panels.FS.FileListView">
-  Welcome to Avalonia!
+  <UserControl.Resources>
+    <conv:AsciiBytesToUtfStringConverter  x:Key="AsciiBytesToUtfStringConverter"/>
+    <GeometryDrawing x:Key="Bootstrap.FolderFill" Brush="#FFd1bd0b" Geometry="M9.873,2.048 L13.95,2.048 A2.048,-2.048 0 0 1 15.99,4.282 L15.34,11.45 A2.048,-2.048 0 0 1 13.3,13.31 L2.7,13.31 A2.048,-2.048 0 0 1 0.661,11.45 L0.008574,4.282 A2.038,-2.038 0 0 1 0.3589,2.941 L0.3189,2.048 A2.048,-2.048 0 0 1 2.367,0 L6.128,0 A2.048,-2.048 0 0 1 7.577,0.6002 L8.425,1.448 A2.048,-2.048 0 0 0 9.873,2.048 z M1.349,2.171 C1.568,2.091 1.804,2.048 2.05,2.048 L7.577,2.048 L6.852,1.324 A1.024,-1.024 0 0 0 6.128,1.024 L2.367,1.024 A1.024,-1.024 0 0 0 1.343,2.029 L1.349,2.171 z"/>
+    <GeometryDrawing x:Key="Bootstrap.File" Brush="#FF000000" Geometry="M2,0 A2,-2 0 0 0 0,2 L0,14 A2,-2 0 0 0 2,16 L10,16 A2,-2 0 0 0 12,14 L12,2 A2,-2 0 0 0 10,0 L2,0 z M2,1 L10,1 A1,-1 0 0 1 11,2 L11,14 A1,-1 0 0 1 10,15 L2,15 A1,-1 0 0 1 1,14 L1,2 A1,-1 0 0 1 2,1 z"/>
+  </UserControl.Resources>
+
+  <UserControl.Styles>
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+      <Setter Property="Background" Value="LightGray" />
+    </Style>
+    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+      <Setter Property="Background" Value="#1F72afb5" />
+    </Style>
+  </UserControl.Styles>
+
+  <Grid>
+    
+  </Grid>
+  
 </UserControl>

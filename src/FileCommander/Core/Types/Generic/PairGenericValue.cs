@@ -49,7 +49,7 @@ public abstract class PairGenericValue<TNewValue,TValue> : GenericValue<TValue>
         set
         {
             this.RaiseAndSetIfChanged(ref _NewValue, value);
-            OnPropertyChanged("NewValue");
+            OnPropertyChanged(nameof(NewValue));
         }
     }
 

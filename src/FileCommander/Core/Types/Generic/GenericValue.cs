@@ -50,7 +50,7 @@ public abstract class GenericValue<TValue> : ReactiveObject, INotifyPropertyChan
         set
         {
             this.RaiseAndSetIfChanged(ref _Value, value);
-            OnPropertyChanged("Value");
+            OnPropertyChanged(nameof(Value));
         }
     }
 

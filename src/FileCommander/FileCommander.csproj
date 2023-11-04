@@ -24,32 +24,40 @@
 	<TrimmableAssembly Include="Avalonia.Themes.Default" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.18" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.18" />
+    <PackageReference Include="Avalonia" Version="0.10.21" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.21" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.18" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.18" />
-    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.18" />
-    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.18" />
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.21" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.21" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.21" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.19" />
 
     <PackageReference Include="CodePort.Wintellect.PowerCollections" Version="1.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Prism.Core" Version="8.1.97" />
-    <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97" />
+    <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.1021" />
     <PackageReference Include="Serilog" Version="2.12.0" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
-    <PackageReference Include="System.Text.Json" Version="7.0.0" />
+    <PackageReference Include="System.Text.Json" Version="7.0.3" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
 
-	  <PackageReference Include="XamlNameReferenceGenerator" Version="1.4.2" />
+	  <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
+    <AvaloniaXaml Update="Views\Controls\FileManagerPanels\FS\FileListView.axaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AvaloniaXaml>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\Controls\FileManagerPanels\FS\FileListView.axaml.cs">
+      <DependentUpon>FileListView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Controls\FileManagerPanels\VirtualFS\VirtualFsView.axaml.cs">
       <DependentUpon>VirtualFsView.axaml</DependentUpon>
     </Compile>

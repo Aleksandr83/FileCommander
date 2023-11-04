@@ -35,7 +35,11 @@
         <!--#region StatusBar-->
         <DockPanel Grid.Row="2"  Background="LightGray">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,4">
-                <Label Classes="Copyright">Copyright (c) 2022 Lukin Aleksandr</Label>
+                <StackPanel Orientation="Horizontal">
+                  <Label Classes="Copyright">Copyright (c)</Label>
+                  <Label Classes="Copyright" Content="{Binding CopyrightYear}"/> 
+                  <Label Classes="Copyright">Lukin Aleksandr</Label>
+                </StackPanel>
                 <Label Classes="Copyright" Margin="0,-6,0,0">lukin.a.g.spb@gmail.com</Label>
             </StackPanel>        
         </DockPanel>
