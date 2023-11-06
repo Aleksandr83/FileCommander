@@ -29,7 +29,7 @@ internal class WritableJsonConfigurationProvider
     public override void Set(string key, string value)
     {
         base.Set(key, value);            
-        var fileFullPath = base.Source.FileProvider.GetFileInfo(base.Source.Path).PhysicalPath;
+        var fileFullPath = base.Source.FileProvider?.GetFileInfo(base.Source?.Path ?? string.Empty).PhysicalPath ?? string.Empty;
         String json = File.ReadAllText(fileFullPath);
         var sectionName   = key.Split(SECTION_SEPARATOR)?.First()?.Trim();
         var parameterName = key.Split(SECTION_SEPARATOR)?.Last()?.Trim();

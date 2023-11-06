@@ -1,11 +1,4 @@
 // Copyright (c) 2021 Lukin Aleksandr
-// using EmployeeClient.Configuration;
-// using EmployeeClient.Services.App;
-// using EmployeeClient.Services.Commands;
-// using EmployeeClient.Services.DockManager;
-// using EmployeeClient.Services.Reffers;
-// using EmployeeClient.Services.Views;
-// using alg.Types.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -21,7 +21,7 @@
 
   <Grid>
     <ScrollViewer  HorizontalScrollBarVisibility="Visible">
-      <DataGrid  CanUserResizeColumns="True"  AutoGenerateColumns="False" Items="{Binding Items}" IsReadOnly="True" >
+      <DataGrid  CanUserResizeColumns="True"  AutoGenerateColumns="False" ItemsSource="{Binding Items}" IsReadOnly="True" >
         <DataGrid.Columns>
               <DataGridTextColumn Header="CRC" 
                                   Binding="{Binding Crc, Converter={StaticResource ToHexStringConverter}}" 

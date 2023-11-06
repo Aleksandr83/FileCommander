@@ -31,62 +31,24 @@ public class App : PrismApplication
         base.Initialize();
     }
 
-    protected override IAvaloniaObject CreateShell()
+    protected override AvaloniaObject CreateShell()
     {
-        //if (IsSingleViewLifetime)
-        //    return Container.Resolve<MainControl>(); // For Linux Framebuffer or DRM
-        //else
-            return Container.Resolve<MainWindow>();
+        return Container.Resolve<MainWindow>();
     }
 
     protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
     {
-        // Register modules
-        //moduleCatalog.AddModule<Module1.Module>();         
+        // Register modules           
     }
 
     /// <summary>Called after <seealso cref="Initialize"/>.</summary>
     protected override void OnInitialized()
-    {
-    // Register initial Views to Region.
-    var regionManager = Container.Resolve<IRegionManager>();       
-    //regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(DashboardView));
-    //regionManager.RegisterViewWithRegion(RegionNames.SidebarRegion, typeof(SidebarView));
+    {    
+        var regionManager = Container.Resolve<IRegionManager>();      
     }
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
-    {
-        // Register Services
-        //containerRegistry.Register<IRestService, RestService>();
-
-        // Views - Generic
-        containerRegistry.Register<MainWindow>();
-
-        // Views - Region Navigation           
-        //containerRegistry.RegisterForNavigation<DashboardView, DashboardViewModel>();
-        //containerRegistry.RegisterForNavigation<SettingsView,  SettingsViewModel>();
-        //containerRegistry.RegisterForNavigation<SidebarView,   SidebarViewModel>();
+    {       
+        containerRegistry.Register<MainWindow>();        
     }
 }
-
-// public partial class App : Application
-// {
-//     public override void Initialize()
-//     {
-//         AvaloniaXamlLoader.Load(this);
-//         MyApp.FileCommander.App.Init();
-//     }
-
-//     public override void OnFrameworkInitializationCompleted()
-//     {
-//         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-//         {
-//             desktop.MainWindow = new MainWindow
-//             {
-//                 DataContext = new MainWindowViewModel(),
-//             };
-//         }
-
-//         base.OnFrameworkInitializationCompleted();
-//     }
-// }

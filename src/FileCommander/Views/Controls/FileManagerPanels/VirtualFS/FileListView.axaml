@@ -25,7 +25,7 @@
   </UserControl.Styles>
 
   <Grid>    
-      <ListBox Focusable="True" SelectionMode="AlwaysSelected" IsHitTestVisible="true" Items="{Binding Items}" SelectedItem="{Binding SelectedPlace, Mode=TwoWay}">        
+      <ListBox Focusable="True" SelectionMode="AlwaysSelected" IsHitTestVisible="true" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedPlace, Mode=TwoWay}">        
         <i:Interaction.Behaviors>
           <beh:ListBoxFocusableOnEventBehavior />
           <beh:ListBoxDoubleClickBehavior />          

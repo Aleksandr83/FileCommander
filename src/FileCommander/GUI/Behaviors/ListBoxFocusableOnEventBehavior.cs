@@ -7,6 +7,7 @@ using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 using FileCommander.Services;
 
+
 namespace FileComander.GUI.Behaviors;
 
 public class ListBoxFocusableOnEventBehavior : Behavior<ListBox>
@@ -31,19 +32,8 @@ public class ListBoxFocusableOnEventBehavior : Behavior<ListBox>
 
             if (item != null)
             {
-                var containers = listBox?.ItemContainerGenerator.Containers; //.ContainerFromItem(item);
-
-                if (containers != null)
-                {
-                    foreach (var container in containers)
-                    {
-                        if (container.ContainerControl is ListBoxItem)
-                        {
-                            if (container.Item == item)
-                                container.ContainerControl.Focus();
-                        }
-                    }
-                }
+                var container = listBox?.ContainerFromItem(item);
+                container?.Focus();                
             }
 
         }

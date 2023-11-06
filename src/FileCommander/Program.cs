@@ -22,9 +22,8 @@ public static class Program
             return 1;
         }
 
-        var builder = BuildAvaloniaApp();
-        //InitializeLogging();
-        
+        var builder = BuildAvaloniaApp();        
+
         //if (args.Contains("--fbdev"))
         //{
         //    SilenceConsole();
@@ -36,7 +35,7 @@ public static class Program
         //    return builder.StartLinuxDrm(args, scaling: GetScaling());
         //}
         //else
-            return builder.StartWithClassicDesktopLifetime(args);
+        return builder.StartWithClassicDesktopLifetime(args);
     }
 
     static void SilenceConsole()
@@ -48,7 +47,7 @@ public static class Program
                 Console.ReadKey(true);
         })
         { IsBackground = true }.Start();
-    }
+    }   
 
     public static AppBuilder BuildAvaloniaApp() =>
     AppBuilder.Configure<App>()
@@ -59,12 +58,12 @@ public static class Program
             UseDBusMenu = true
         })
         .With(new Win32PlatformOptions
-        {
-            EnableMultitouch = true,
-            AllowEglInitialization = true
+        {                      
         })
         .UseSkia()
         .UseReactiveUI()
-        .UseManagedSystemDialogs();
+        .WithInterFont()
+        .UseManagedSystemDialogs()
+        .LogToTrace();
 }
 

@@ -57,7 +57,7 @@
               
             <DockPanel>
 
-            <StackPanel Orientation="Vertical" Margin="8,0,0,0" Width="150" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Margin="8,0,0,0" Width="154" HorizontalAlignment="Left">
               <Label Content="Storage" HorizontalAlignment="Center" />
               <Line Margin="0,-2, 0, 4" StartPoint="-5,0"  EndPoint="155,0" StrokeThickness="1" Stroke="Black" />
               <Line Margin="0,-4, 0, 0" StartPoint="-5,0"  EndPoint="-5,8"  StrokeThickness="1" Stroke="Black"  />
@@ -80,11 +80,11 @@
               </DockPanel> 
             </StackPanel>  
 
-            <StackPanel Orientation="Vertical" Margin="20,0,0,0" Width="292" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Margin="20,0,0,0" Width="298" HorizontalAlignment="Left">
               <Label Content="Selection" HorizontalAlignment="Center" />
-              <Line Margin="0,-2, 0, 4" StartPoint="-5,0"  EndPoint="297,0" StrokeThickness="1" Stroke="Black" />
+              <Line Margin="0,-2, 0, 4" StartPoint="-5,0"  EndPoint="301,0" StrokeThickness="1" Stroke="Black" />
               <Line Margin="0,-4, 0, 0" StartPoint="-5,0"  EndPoint="-5,8"  StrokeThickness="1" Stroke="Black"  />
-              <Line Margin="0,-8, 0, 0" StartPoint="297,0" EndPoint="297,8" StrokeThickness="1" Stroke="Black"  />
+              <Line Margin="0,-8, 0, 0" StartPoint="301,0" EndPoint="301,8" StrokeThickness="1" Stroke="Black"  />
               <DockPanel>
                 <Button Content="Open"    Command="{Binding Open}" />
                 <Button Content="Rename"  Command="{Binding Rename}" />  
